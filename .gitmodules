@@ -1,0 +1,3 @@
+[submodule "hister"]
+	path = vendor/hister
+	url = https://github.com/asciimoo/hister.git

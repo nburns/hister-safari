@@ -1,0 +1,1035 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011ECEB5303CAB1F00BBDC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011ECEB4303CAB1F00BBDC7F /* AppDelegate.swift */; };
+		011ECEB9303CAB1F00BBDC7F /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEB7303CAB1F00BBDC7F /* Main.html */; };
+		011ECEBB303CAB1F00BBDC7F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEBA303CAB1F00BBDC7F /* Icon.png */; };
+		011ECEBD303CAB1F00BBDC7F /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEBC303CAB1F00BBDC7F /* Style.css */; };
+		011ECEBF303CAB1F00BBDC7F /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEBE303CAB1F00BBDC7F /* Script.js */; };
+		011ECEC1303CAB1F00BBDC7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011ECEC0303CAB1F00BBDC7F /* ViewController.swift */; };
+		011ECEC4303CAB1F00BBDC7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEC2303CAB1F00BBDC7F /* Main.storyboard */; };
+		011ECEC6303CAB2000BBDC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEC5303CAB2000BBDC7F /* Assets.xcassets */; };
+		011ECECD303CAB2000BBDC7F /* Hister Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 011ECECC303CAB2000BBDC7F /* Hister Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		011ECED2303CAB2000BBDC7F /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011ECED1303CAB2000BBDC7F /* SafariWebExtensionHandler.swift */; };
+		011ECF4F303CAB2000BBDC7F /* fira-code-greek-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEDE303CAB2000BBDC7F /* fira-code-greek-500-normal.woff2 */; };
+		011ECF50303CAB2000BBDC7F /* inter-latin-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEDF303CAB2000BBDC7F /* inter-latin-600-normal.woff2 */; };
+		011ECF51303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE0303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff2 */; };
+		011ECF52303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE1303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff */; };
+		011ECF53303CAB2000BBDC7F /* fira-code-latin-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE2303CAB2000BBDC7F /* fira-code-latin-400-normal.woff */; };
+		011ECF54303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE3303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff2 */; };
+		011ECF55303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE4303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff */; };
+		011ECF56303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE5303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff2 */; };
+		011ECF57303CAB2000BBDC7F /* inter-latin-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE6303CAB2000BBDC7F /* inter-latin-400-normal.woff */; };
+		011ECF58303CAB2000BBDC7F /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE7303CAB2000BBDC7F /* popup.js */; };
+		011ECF59303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE8303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff */; };
+		011ECF5A303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEE9303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff2 */; };
+		011ECF5B303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEEA303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff */; };
+		011ECF5C303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEEB303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff2 */; };
+		011ECF5D303CAB2000BBDC7F /* inter-latin-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEEC303CAB2000BBDC7F /* inter-latin-700-normal.woff */; };
+		011ECF5E303CAB2000BBDC7F /* outfit-latin-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEED303CAB2000BBDC7F /* outfit-latin-600-normal.woff */; };
+		011ECF5F303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEEE303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff2 */; };
+		011ECF60303CAB2000BBDC7F /* inter-latin-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF0303CAB2000BBDC7F /* inter-latin-700-normal.woff2 */; };
+		011ECF61303CAB2000BBDC7F /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF1303CAB2000BBDC7F /* background.js */; };
+		011ECF62303CAB2000BBDC7F /* fira-code-greek-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF2303CAB2000BBDC7F /* fira-code-greek-400-normal.woff2 */; };
+		011ECF63303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF3303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff2 */; };
+		011ECF64303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF4303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff2 */; };
+		011ECF65303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF5303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff2 */; };
+		011ECF66303CAB2000BBDC7F /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF6303CAB2000BBDC7F /* popup.html */; };
+		011ECF67303CAB2000BBDC7F /* inter-greek-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF7303CAB2000BBDC7F /* inter-greek-700-normal.woff */; };
+		011ECF68303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF8303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff */; };
+		011ECF69303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEF9303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff */; };
+		011ECF6A303CAB2000BBDC7F /* inter-latin-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFA303CAB2000BBDC7F /* inter-latin-500-normal.woff2 */; };
+		011ECF6B303CAB2000BBDC7F /* fira-code-symbols2-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFB303CAB2000BBDC7F /* fira-code-symbols2-400-normal.woff */; };
+		011ECF6C303CAB2000BBDC7F /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFC303CAB2000BBDC7F /* options.js */; };
+		011ECF6D303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFD303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff2 */; };
+		011ECF6E303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFE303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff */; };
+		011ECF6F303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECEFF303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff */; };
+		011ECF70303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF00303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff */; };
+		011ECF71303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF01303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff */; };
+		011ECF72303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF02303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff */; };
+		011ECF73303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF03303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff */; };
+		011ECF74303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF04303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff2 */; };
+		011ECF75303CAB2000BBDC7F /* inter-latin-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF06303CAB2000BBDC7F /* inter-latin-400-normal.woff2 */; };
+		011ECF76303CAB2000BBDC7F /* fira-code-greek-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF07303CAB2000BBDC7F /* fira-code-greek-400-normal.woff */; };
+		011ECF77303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF08303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff2 */; };
+		011ECF78303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF09303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff */; };
+		011ECF79303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0A303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff */; };
+		011ECF7A303CAB2000BBDC7F /* inter-greek-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0B303CAB2000BBDC7F /* inter-greek-400-normal.woff */; };
+		011ECF7B303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0C303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff2 */; };
+		011ECF7C303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0D303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff2 */; };
+		011ECF7D303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0E303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff */; };
+		011ECF7E303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF0F303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff2 */; };
+		011ECF7F303CAB2000BBDC7F /* fira-code-latin-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF10303CAB2000BBDC7F /* fira-code-latin-400-normal.woff2 */; };
+		011ECF80303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF11303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff */; };
+		011ECF81303CAB2000BBDC7F /* inter-greek-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF12303CAB2000BBDC7F /* inter-greek-700-normal.woff2 */; };
+		011ECF82303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF13303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff */; };
+		011ECF83303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF14303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff2 */; };
+		011ECF84303CAB2000BBDC7F /* outfit-latin-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF15303CAB2000BBDC7F /* outfit-latin-700-normal.woff2 */; };
+		011ECF85303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF16303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff */; };
+		011ECF86303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF17303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff */; };
+		011ECF87303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF18303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff */; };
+		011ECF88303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF19303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff2 */; };
+		011ECF89303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1A303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff */; };
+		011ECF8A303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1B303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff */; };
+		011ECF8B303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1C303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff2 */; };
+		011ECF8C303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1D303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff2 */; };
+		011ECF8D303CAB2000BBDC7F /* inter-greek-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1E303CAB2000BBDC7F /* inter-greek-500-normal.woff */; };
+		011ECF8E303CAB2000BBDC7F /* fira-code-greek-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF1F303CAB2000BBDC7F /* fira-code-greek-500-normal.woff */; };
+		011ECF8F303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF21303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff2 */; };
+		011ECF90303CAB2000BBDC7F /* fira-code-symbols2-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF22303CAB2000BBDC7F /* fira-code-symbols2-500-normal.woff */; };
+		011ECF91303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF23303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff2 */; };
+		011ECF92303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF24303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff */; };
+		011ECF93303CAB2000BBDC7F /* inter-greek-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF25303CAB2000BBDC7F /* inter-greek-600-normal.woff */; };
+		011ECF94303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF26303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff */; };
+		011ECF95303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF27303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff */; };
+		011ECF96303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF28303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff2 */; };
+		011ECF97303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF29303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff2 */; };
+		011ECF98303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF2A303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff2 */; };
+		011ECF99303CAB2000BBDC7F /* outfit-latin-900-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF2C303CAB2000BBDC7F /* outfit-latin-900-normal.woff2 */; };
+		011ECF9A303CAB2000BBDC7F /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF2D303CAB2000BBDC7F /* style.css */; };
+		011ECF9B303CAB2000BBDC7F /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF2E303CAB2000BBDC7F /* manifest.json */; };
+		011ECF9C303CAB2000BBDC7F /* outfit-latin-900-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF2F303CAB2000BBDC7F /* outfit-latin-900-normal.woff */; };
+		011ECF9D303CAB2000BBDC7F /* outfit-latin-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF30303CAB2000BBDC7F /* outfit-latin-600-normal.woff2 */; };
+		011ECF9E303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF31303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff */; };
+		011ECF9F303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF32303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff */; };
+		011ECFA0303CAB2000BBDC7F /* inter-greek-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF33303CAB2000BBDC7F /* inter-greek-600-normal.woff2 */; };
+		011ECFA1303CAB2000BBDC7F /* fira-code-latin-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF34303CAB2000BBDC7F /* fira-code-latin-500-normal.woff2 */; };
+		011ECFA2303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF35303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff2 */; };
+		011ECFA3303CAB2000BBDC7F /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF36303CAB2000BBDC7F /* options.html */; };
+		011ECFA4303CAB2000BBDC7F /* outfit-latin-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF37303CAB2000BBDC7F /* outfit-latin-700-normal.woff */; };
+		011ECFA5303CAB2000BBDC7F /* inter-latin-600-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF38303CAB2000BBDC7F /* inter-latin-600-normal.woff */; };
+		011ECFA6303CAB2000BBDC7F /* outfit-latin-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF39303CAB2000BBDC7F /* outfit-latin-400-normal.woff2 */; };
+		011ECFA7303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF3A303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff */; };
+		011ECFA8303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF3B303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff2 */; };
+		011ECFA9303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF3C303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff */; };
+		011ECFAA303CAB2000BBDC7F /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF3D303CAB2000BBDC7F /* content.js */; };
+		011ECFAB303CAB2000BBDC7F /* inter-greek-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF3E303CAB2000BBDC7F /* inter-greek-400-normal.woff2 */; };
+		011ECFAC303CAB2000BBDC7F /* shared.js in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF40303CAB2000BBDC7F /* shared.js */; };
+		011ECFAD303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF41303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff2 */; };
+		011ECFAE303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF42303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff2 */; };
+		011ECFAF303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF43303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff2 */; };
+		011ECFB0303CAB2000BBDC7F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF44303CAB2000BBDC7F /* assets */; };
+		011ECFB1303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF45303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff */; };
+		011ECFB2303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF46303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff */; };
+		011ECFB3303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF47303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff2 */; };
+		011ECFB4303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF48303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff2 */; };
+		011ECFB5303CAB2000BBDC7F /* inter-latin-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF49303CAB2000BBDC7F /* inter-latin-500-normal.woff */; };
+		011ECFB6303CAB2000BBDC7F /* outfit-latin-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF4A303CAB2000BBDC7F /* outfit-latin-400-normal.woff */; };
+		011ECFB7303CAB2000BBDC7F /* inter-greek-500-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF4B303CAB2000BBDC7F /* inter-greek-500-normal.woff2 */; };
+		011ECFB8303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF4C303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff2 */; };
+		011ECFB9303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF4D303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff */; };
+		011ECFBA303CAB2000BBDC7F /* fira-code-latin-500-normal.woff in Resources */ = {isa = PBXBuildFile; fileRef = 011ECF4E303CAB2000BBDC7F /* fira-code-latin-500-normal.woff */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		011ECECE303CAB2000BBDC7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 011ECEA9303CAB1F00BBDC7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 011ECECB303CAB2000BBDC7F;
+			remoteInfo = "Hister Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		011ECED9303CAB2000BBDC7F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				011ECECD303CAB2000BBDC7F /* Hister Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		011ECEB1303CAB1F00BBDC7F /* Hister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hister.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		011ECEB4303CAB1F00BBDC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		011ECEB8303CAB1F00BBDC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		011ECEBA303CAB1F00BBDC7F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		011ECEBC303CAB1F00BBDC7F /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		011ECEBE303CAB1F00BBDC7F /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		011ECEC0303CAB1F00BBDC7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		011ECEC3303CAB1F00BBDC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		011ECEC5303CAB2000BBDC7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		011ECEC7303CAB2000BBDC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011ECECC303CAB2000BBDC7F /* Hister Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hister Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		011ECED1303CAB2000BBDC7F /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		011ECED3303CAB2000BBDC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011ECEDE303CAB2000BBDC7F /* fira-code-greek-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-500-normal.woff2"; path = "Resources/fira-code-greek-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEDF303CAB2000BBDC7F /* inter-latin-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-600-normal.woff2"; path = "Resources/inter-latin-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECEE0303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-400-normal.woff2"; path = "Resources/inter-cyrillic-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECEE1303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-400-normal.woff"; path = "Resources/fira-code-cyrillic-400-normal.woff"; sourceTree = "<group>"; };
+		011ECEE2303CAB2000BBDC7F /* fira-code-latin-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-400-normal.woff"; path = "Resources/fira-code-latin-400-normal.woff"; sourceTree = "<group>"; };
+		011ECEE3303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-ext-400-normal.woff2"; path = "Resources/fira-code-cyrillic-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECEE4303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-500-normal.woff"; path = "Resources/inter-greek-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECEE5303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-600-normal.woff2"; path = "Resources/inter-greek-ext-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECEE6303CAB2000BBDC7F /* inter-latin-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-400-normal.woff"; path = "Resources/inter-latin-400-normal.woff"; sourceTree = "<group>"; };
+		011ECEE7303CAB2000BBDC7F /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = Resources/popup.js; sourceTree = "<group>"; };
+		011ECEE8303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-ext-500-normal.woff"; path = "Resources/fira-code-latin-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECEE9303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-700-normal.woff2"; path = "Resources/inter-greek-ext-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECEEA303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-600-normal.woff"; path = "Resources/inter-greek-ext-600-normal.woff"; sourceTree = "<group>"; };
+		011ECEEB303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-ext-500-normal.woff2"; path = "Resources/fira-code-cyrillic-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEEC303CAB2000BBDC7F /* inter-latin-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-700-normal.woff"; path = "Resources/inter-latin-700-normal.woff"; sourceTree = "<group>"; };
+		011ECEED303CAB2000BBDC7F /* outfit-latin-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-600-normal.woff"; path = "Resources/outfit-latin-600-normal.woff"; sourceTree = "<group>"; };
+		011ECEEE303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-500-normal.woff2"; path = "Resources/inter-cyrillic-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEEF303CAB2000BBDC7F /* popup.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = popup.js.map; path = Resources/popup.js.map; sourceTree = "<group>"; };
+		011ECEF0303CAB2000BBDC7F /* inter-latin-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-700-normal.woff2"; path = "Resources/inter-latin-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECEF1303CAB2000BBDC7F /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = Resources/background.js; sourceTree = "<group>"; };
+		011ECEF2303CAB2000BBDC7F /* fira-code-greek-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-400-normal.woff2"; path = "Resources/fira-code-greek-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECEF3303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-500-normal.woff2"; path = "Resources/fira-code-cyrillic-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEF4303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-ext-500-normal.woff2"; path = "Resources/fira-code-greek-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEF5303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-700-normal.woff2"; path = "Resources/inter-cyrillic-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECEF6303CAB2000BBDC7F /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = Resources/popup.html; sourceTree = "<group>"; };
+		011ECEF7303CAB2000BBDC7F /* inter-greek-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-700-normal.woff"; path = "Resources/inter-greek-700-normal.woff"; sourceTree = "<group>"; };
+		011ECEF8303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-500-normal.woff"; path = "Resources/inter-cyrillic-500-normal.woff"; sourceTree = "<group>"; };
+		011ECEF9303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-500-normal.woff"; path = "Resources/inter-cyrillic-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECEFA303CAB2000BBDC7F /* inter-latin-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-500-normal.woff2"; path = "Resources/inter-latin-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEFB303CAB2000BBDC7F /* fira-code-symbols2-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-symbols2-400-normal.woff"; path = "Resources/fira-code-symbols2-400-normal.woff"; sourceTree = "<group>"; };
+		011ECEFC303CAB2000BBDC7F /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.js; path = Resources/options.js; sourceTree = "<group>"; };
+		011ECEFD303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-500-normal.woff2"; path = "Resources/inter-greek-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECEFE303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-500-normal.woff"; path = "Resources/inter-latin-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECEFF303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-700-normal.woff"; path = "Resources/inter-vietnamese-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF00303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-ext-500-normal.woff"; path = "Resources/fira-code-greek-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF01303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-600-normal.woff"; path = "Resources/inter-latin-ext-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF02303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-400-normal.woff"; path = "Resources/inter-vietnamese-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF03303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-ext-400-normal.woff"; path = "Resources/fira-code-cyrillic-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF04303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-400-normal.woff2"; path = "Resources/inter-greek-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF05303CAB2000BBDC7F /* options.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = options.js.map; path = Resources/options.js.map; sourceTree = "<group>"; };
+		011ECF06303CAB2000BBDC7F /* inter-latin-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-400-normal.woff2"; path = "Resources/inter-latin-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF07303CAB2000BBDC7F /* fira-code-greek-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-400-normal.woff"; path = "Resources/fira-code-greek-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF08303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-600-normal.woff2"; path = "Resources/inter-cyrillic-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF09303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-600-normal.woff"; path = "Resources/inter-cyrillic-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF0A303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-600-normal.woff"; path = "Resources/outfit-latin-ext-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF0B303CAB2000BBDC7F /* inter-greek-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-400-normal.woff"; path = "Resources/inter-greek-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF0C303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-ext-400-normal.woff2"; path = "Resources/fira-code-greek-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF0D303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-400-normal.woff2"; path = "Resources/fira-code-cyrillic-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF0E303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-600-normal.woff"; path = "Resources/inter-cyrillic-ext-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF0F303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-500-normal.woff2"; path = "Resources/inter-latin-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF10303CAB2000BBDC7F /* fira-code-latin-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-400-normal.woff2"; path = "Resources/fira-code-latin-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF11303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-ext-500-normal.woff"; path = "Resources/fira-code-cyrillic-ext-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF12303CAB2000BBDC7F /* inter-greek-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-700-normal.woff2"; path = "Resources/inter-greek-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF13303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-500-normal.woff"; path = "Resources/inter-vietnamese-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF14303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-900-normal.woff2"; path = "Resources/outfit-latin-ext-900-normal.woff2"; sourceTree = "<group>"; };
+		011ECF15303CAB2000BBDC7F /* outfit-latin-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-700-normal.woff2"; path = "Resources/outfit-latin-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF16303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-700-normal.woff"; path = "Resources/inter-latin-ext-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF17303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-ext-400-normal.woff"; path = "Resources/fira-code-greek-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF18303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-700-normal.woff"; path = "Resources/inter-cyrillic-ext-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF19303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-400-normal.woff2"; path = "Resources/inter-vietnamese-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF1A303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-700-normal.woff"; path = "Resources/outfit-latin-ext-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF1B303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-700-normal.woff"; path = "Resources/inter-cyrillic-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF1C303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-500-normal.woff2"; path = "Resources/inter-cyrillic-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF1D303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-ext-500-normal.woff2"; path = "Resources/fira-code-latin-ext-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF1E303CAB2000BBDC7F /* inter-greek-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-500-normal.woff"; path = "Resources/inter-greek-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF1F303CAB2000BBDC7F /* fira-code-greek-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-greek-500-normal.woff"; path = "Resources/fira-code-greek-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF20303CAB2000BBDC7F /* content.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = content.js.map; path = Resources/content.js.map; sourceTree = "<group>"; };
+		011ECF21303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-600-normal.woff2"; path = "Resources/outfit-latin-ext-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF22303CAB2000BBDC7F /* fira-code-symbols2-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-symbols2-500-normal.woff"; path = "Resources/fira-code-symbols2-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF23303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-700-normal.woff2"; path = "Resources/outfit-latin-ext-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF24303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-400-normal.woff"; path = "Resources/inter-cyrillic-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF25303CAB2000BBDC7F /* inter-greek-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-600-normal.woff"; path = "Resources/inter-greek-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF26303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-400-normal.woff"; path = "Resources/inter-cyrillic-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF27303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-400-normal.woff"; path = "Resources/outfit-latin-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF28303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-500-normal.woff2"; path = "Resources/inter-vietnamese-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF29303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-ext-400-normal.woff2"; path = "Resources/fira-code-latin-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF2A303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-400-normal.woff2"; path = "Resources/inter-cyrillic-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF2B303CAB2000BBDC7F /* shared.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = shared.js.map; path = Resources/shared.js.map; sourceTree = "<group>"; };
+		011ECF2C303CAB2000BBDC7F /* outfit-latin-900-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-900-normal.woff2"; path = "Resources/outfit-latin-900-normal.woff2"; sourceTree = "<group>"; };
+		011ECF2D303CAB2000BBDC7F /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = style.css; path = Resources/style.css; sourceTree = "<group>"; };
+		011ECF2E303CAB2000BBDC7F /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
+		011ECF2F303CAB2000BBDC7F /* outfit-latin-900-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-900-normal.woff"; path = "Resources/outfit-latin-900-normal.woff"; sourceTree = "<group>"; };
+		011ECF30303CAB2000BBDC7F /* outfit-latin-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-600-normal.woff2"; path = "Resources/outfit-latin-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF31303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-600-normal.woff"; path = "Resources/inter-vietnamese-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF32303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-400-normal.woff"; path = "Resources/inter-latin-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF33303CAB2000BBDC7F /* inter-greek-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-600-normal.woff2"; path = "Resources/inter-greek-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF34303CAB2000BBDC7F /* fira-code-latin-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-500-normal.woff2"; path = "Resources/fira-code-latin-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF35303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-400-normal.woff2"; path = "Resources/inter-latin-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF36303CAB2000BBDC7F /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = options.html; path = Resources/options.html; sourceTree = "<group>"; };
+		011ECF37303CAB2000BBDC7F /* outfit-latin-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-700-normal.woff"; path = "Resources/outfit-latin-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF38303CAB2000BBDC7F /* inter-latin-600-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-600-normal.woff"; path = "Resources/inter-latin-600-normal.woff"; sourceTree = "<group>"; };
+		011ECF39303CAB2000BBDC7F /* outfit-latin-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-400-normal.woff2"; path = "Resources/outfit-latin-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF3A303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-700-normal.woff"; path = "Resources/inter-greek-ext-700-normal.woff"; sourceTree = "<group>"; };
+		011ECF3B303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-600-normal.woff2"; path = "Resources/inter-latin-ext-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF3C303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-ext-400-normal.woff"; path = "Resources/fira-code-latin-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF3D303CAB2000BBDC7F /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = Resources/content.js; sourceTree = "<group>"; };
+		011ECF3E303CAB2000BBDC7F /* inter-greek-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-400-normal.woff2"; path = "Resources/inter-greek-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF3F303CAB2000BBDC7F /* background.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = background.js.map; path = Resources/background.js.map; sourceTree = "<group>"; };
+		011ECF40303CAB2000BBDC7F /* shared.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = shared.js; path = Resources/shared.js; sourceTree = "<group>"; };
+		011ECF41303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-600-normal.woff2"; path = "Resources/inter-cyrillic-ext-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF42303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-700-normal.woff2"; path = "Resources/inter-vietnamese-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF43303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-cyrillic-ext-700-normal.woff2"; path = "Resources/inter-cyrillic-ext-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF44303CAB2000BBDC7F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = Resources/assets; sourceTree = "<group>"; };
+		011ECF45303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-cyrillic-500-normal.woff"; path = "Resources/fira-code-cyrillic-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF46303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-900-normal.woff"; path = "Resources/outfit-latin-ext-900-normal.woff"; sourceTree = "<group>"; };
+		011ECF47303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-vietnamese-600-normal.woff2"; path = "Resources/inter-vietnamese-600-normal.woff2"; sourceTree = "<group>"; };
+		011ECF48303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-ext-400-normal.woff2"; path = "Resources/outfit-latin-ext-400-normal.woff2"; sourceTree = "<group>"; };
+		011ECF49303CAB2000BBDC7F /* inter-latin-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-500-normal.woff"; path = "Resources/inter-latin-500-normal.woff"; sourceTree = "<group>"; };
+		011ECF4A303CAB2000BBDC7F /* outfit-latin-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "outfit-latin-400-normal.woff"; path = "Resources/outfit-latin-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF4B303CAB2000BBDC7F /* inter-greek-500-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-500-normal.woff2"; path = "Resources/inter-greek-500-normal.woff2"; sourceTree = "<group>"; };
+		011ECF4C303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-latin-ext-700-normal.woff2"; path = "Resources/inter-latin-ext-700-normal.woff2"; sourceTree = "<group>"; };
+		011ECF4D303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "inter-greek-ext-400-normal.woff"; path = "Resources/inter-greek-ext-400-normal.woff"; sourceTree = "<group>"; };
+		011ECF4E303CAB2000BBDC7F /* fira-code-latin-500-normal.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fira-code-latin-500-normal.woff"; path = "Resources/fira-code-latin-500-normal.woff"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		011ECEAE303CAB1F00BBDC7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011ECEC9303CAB2000BBDC7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		011ECEA8303CAB1F00BBDC7F = {
+			isa = PBXGroup;
+			children = (
+				011ECEB3303CAB1F00BBDC7F /* Hister */,
+				011ECED0303CAB2000BBDC7F /* Hister Extension */,
+				011ECEB2303CAB1F00BBDC7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		011ECEB2303CAB1F00BBDC7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				011ECEB1303CAB1F00BBDC7F /* Hister.app */,
+				011ECECC303CAB2000BBDC7F /* Hister Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		011ECEB3303CAB1F00BBDC7F /* Hister */ = {
+			isa = PBXGroup;
+			children = (
+				011ECEB4303CAB1F00BBDC7F /* AppDelegate.swift */,
+				011ECEC0303CAB1F00BBDC7F /* ViewController.swift */,
+				011ECEC2303CAB1F00BBDC7F /* Main.storyboard */,
+				011ECEC5303CAB2000BBDC7F /* Assets.xcassets */,
+				011ECEC7303CAB2000BBDC7F /* Info.plist */,
+				011ECEB6303CAB1F00BBDC7F /* Resources */,
+			);
+			path = Hister;
+			sourceTree = "<group>";
+		};
+		011ECEB6303CAB1F00BBDC7F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				011ECEB7303CAB1F00BBDC7F /* Main.html */,
+				011ECEBA303CAB1F00BBDC7F /* Icon.png */,
+				011ECEBC303CAB1F00BBDC7F /* Style.css */,
+				011ECEBE303CAB1F00BBDC7F /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		011ECED0303CAB2000BBDC7F /* Hister Extension */ = {
+			isa = PBXGroup;
+			children = (
+				011ECEDD303CAB2000BBDC7F /* Resources */,
+				011ECED1303CAB2000BBDC7F /* SafariWebExtensionHandler.swift */,
+				011ECED3303CAB2000BBDC7F /* Info.plist */,
+			);
+			path = "Hister Extension";
+			sourceTree = "<group>";
+		};
+		011ECEDD303CAB2000BBDC7F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				011ECEDE303CAB2000BBDC7F /* fira-code-greek-500-normal.woff2 */,
+				011ECEDF303CAB2000BBDC7F /* inter-latin-600-normal.woff2 */,
+				011ECEE0303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff2 */,
+				011ECEE1303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff */,
+				011ECEE2303CAB2000BBDC7F /* fira-code-latin-400-normal.woff */,
+				011ECEE3303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff2 */,
+				011ECEE4303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff */,
+				011ECEE5303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff2 */,
+				011ECEE6303CAB2000BBDC7F /* inter-latin-400-normal.woff */,
+				011ECEE7303CAB2000BBDC7F /* popup.js */,
+				011ECEE8303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff */,
+				011ECEE9303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff2 */,
+				011ECEEA303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff */,
+				011ECEEB303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff2 */,
+				011ECEEC303CAB2000BBDC7F /* inter-latin-700-normal.woff */,
+				011ECEED303CAB2000BBDC7F /* outfit-latin-600-normal.woff */,
+				011ECEEE303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff2 */,
+				011ECEEF303CAB2000BBDC7F /* popup.js.map */,
+				011ECEF0303CAB2000BBDC7F /* inter-latin-700-normal.woff2 */,
+				011ECEF1303CAB2000BBDC7F /* background.js */,
+				011ECEF2303CAB2000BBDC7F /* fira-code-greek-400-normal.woff2 */,
+				011ECEF3303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff2 */,
+				011ECEF4303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff2 */,
+				011ECEF5303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff2 */,
+				011ECEF6303CAB2000BBDC7F /* popup.html */,
+				011ECEF7303CAB2000BBDC7F /* inter-greek-700-normal.woff */,
+				011ECEF8303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff */,
+				011ECEF9303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff */,
+				011ECEFA303CAB2000BBDC7F /* inter-latin-500-normal.woff2 */,
+				011ECEFB303CAB2000BBDC7F /* fira-code-symbols2-400-normal.woff */,
+				011ECEFC303CAB2000BBDC7F /* options.js */,
+				011ECEFD303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff2 */,
+				011ECEFE303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff */,
+				011ECEFF303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff */,
+				011ECF00303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff */,
+				011ECF01303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff */,
+				011ECF02303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff */,
+				011ECF03303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff */,
+				011ECF04303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff2 */,
+				011ECF05303CAB2000BBDC7F /* options.js.map */,
+				011ECF06303CAB2000BBDC7F /* inter-latin-400-normal.woff2 */,
+				011ECF07303CAB2000BBDC7F /* fira-code-greek-400-normal.woff */,
+				011ECF08303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff2 */,
+				011ECF09303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff */,
+				011ECF0A303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff */,
+				011ECF0B303CAB2000BBDC7F /* inter-greek-400-normal.woff */,
+				011ECF0C303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff2 */,
+				011ECF0D303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff2 */,
+				011ECF0E303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff */,
+				011ECF0F303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff2 */,
+				011ECF10303CAB2000BBDC7F /* fira-code-latin-400-normal.woff2 */,
+				011ECF11303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff */,
+				011ECF12303CAB2000BBDC7F /* inter-greek-700-normal.woff2 */,
+				011ECF13303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff */,
+				011ECF14303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff2 */,
+				011ECF15303CAB2000BBDC7F /* outfit-latin-700-normal.woff2 */,
+				011ECF16303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff */,
+				011ECF17303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff */,
+				011ECF18303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff */,
+				011ECF19303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff2 */,
+				011ECF1A303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff */,
+				011ECF1B303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff */,
+				011ECF1C303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff2 */,
+				011ECF1D303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff2 */,
+				011ECF1E303CAB2000BBDC7F /* inter-greek-500-normal.woff */,
+				011ECF1F303CAB2000BBDC7F /* fira-code-greek-500-normal.woff */,
+				011ECF20303CAB2000BBDC7F /* content.js.map */,
+				011ECF21303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff2 */,
+				011ECF22303CAB2000BBDC7F /* fira-code-symbols2-500-normal.woff */,
+				011ECF23303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff2 */,
+				011ECF24303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff */,
+				011ECF25303CAB2000BBDC7F /* inter-greek-600-normal.woff */,
+				011ECF26303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff */,
+				011ECF27303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff */,
+				011ECF28303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff2 */,
+				011ECF29303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff2 */,
+				011ECF2A303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff2 */,
+				011ECF2B303CAB2000BBDC7F /* shared.js.map */,
+				011ECF2C303CAB2000BBDC7F /* outfit-latin-900-normal.woff2 */,
+				011ECF2D303CAB2000BBDC7F /* style.css */,
+				011ECF2E303CAB2000BBDC7F /* manifest.json */,
+				011ECF2F303CAB2000BBDC7F /* outfit-latin-900-normal.woff */,
+				011ECF30303CAB2000BBDC7F /* outfit-latin-600-normal.woff2 */,
+				011ECF31303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff */,
+				011ECF32303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff */,
+				011ECF33303CAB2000BBDC7F /* inter-greek-600-normal.woff2 */,
+				011ECF34303CAB2000BBDC7F /* fira-code-latin-500-normal.woff2 */,
+				011ECF35303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff2 */,
+				011ECF36303CAB2000BBDC7F /* options.html */,
+				011ECF37303CAB2000BBDC7F /* outfit-latin-700-normal.woff */,
+				011ECF38303CAB2000BBDC7F /* inter-latin-600-normal.woff */,
+				011ECF39303CAB2000BBDC7F /* outfit-latin-400-normal.woff2 */,
+				011ECF3A303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff */,
+				011ECF3B303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff2 */,
+				011ECF3C303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff */,
+				011ECF3D303CAB2000BBDC7F /* content.js */,
+				011ECF3E303CAB2000BBDC7F /* inter-greek-400-normal.woff2 */,
+				011ECF3F303CAB2000BBDC7F /* background.js.map */,
+				011ECF40303CAB2000BBDC7F /* shared.js */,
+				011ECF41303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff2 */,
+				011ECF42303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff2 */,
+				011ECF43303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff2 */,
+				011ECF44303CAB2000BBDC7F /* assets */,
+				011ECF45303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff */,
+				011ECF46303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff */,
+				011ECF47303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff2 */,
+				011ECF48303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff2 */,
+				011ECF49303CAB2000BBDC7F /* inter-latin-500-normal.woff */,
+				011ECF4A303CAB2000BBDC7F /* outfit-latin-400-normal.woff */,
+				011ECF4B303CAB2000BBDC7F /* inter-greek-500-normal.woff2 */,
+				011ECF4C303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff2 */,
+				011ECF4D303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff */,
+				011ECF4E303CAB2000BBDC7F /* fira-code-latin-500-normal.woff */,
+			);
+			name = Resources;
+			path = "Hister Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		011ECEB0303CAB1F00BBDC7F /* Hister */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 011ECEDA303CAB2000BBDC7F /* Build configuration list for PBXNativeTarget "Hister" */;
+			buildPhases = (
+				011ECEAD303CAB1F00BBDC7F /* Sources */,
+				011ECEAE303CAB1F00BBDC7F /* Frameworks */,
+				011ECEAF303CAB1F00BBDC7F /* Resources */,
+				011ECED9303CAB2000BBDC7F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				011ECECF303CAB2000BBDC7F /* PBXTargetDependency */,
+			);
+			name = Hister;
+			packageProductDependencies = (
+			);
+			productName = Hister;
+			productReference = 011ECEB1303CAB1F00BBDC7F /* Hister.app */;
+			productType = "com.apple.product-type.application";
+		};
+		011ECECB303CAB2000BBDC7F /* Hister Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 011ECED6303CAB2000BBDC7F /* Build configuration list for PBXNativeTarget "Hister Extension" */;
+			buildPhases = (
+				011ECEC8303CAB2000BBDC7F /* Sources */,
+				011ECEC9303CAB2000BBDC7F /* Frameworks */,
+				011ECECA303CAB2000BBDC7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hister Extension";
+			packageProductDependencies = (
+			);
+			productName = "Hister Extension";
+			productReference = 011ECECC303CAB2000BBDC7F /* Hister Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		011ECEA9303CAB1F00BBDC7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					011ECEB0303CAB1F00BBDC7F = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
+					011ECECB303CAB2000BBDC7F = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 011ECEAC303CAB1F00BBDC7F /* Build configuration list for PBXProject "Hister" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 011ECEA8303CAB1F00BBDC7F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 011ECEB2303CAB1F00BBDC7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				011ECEB0303CAB1F00BBDC7F /* Hister */,
+				011ECECB303CAB2000BBDC7F /* Hister Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		011ECEAF303CAB1F00BBDC7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011ECEBB303CAB1F00BBDC7F /* Icon.png in Resources */,
+				011ECEC4303CAB1F00BBDC7F /* Main.storyboard in Resources */,
+				011ECEBF303CAB1F00BBDC7F /* Script.js in Resources */,
+				011ECEB9303CAB1F00BBDC7F /* Main.html in Resources */,
+				011ECEC6303CAB2000BBDC7F /* Assets.xcassets in Resources */,
+				011ECEBD303CAB1F00BBDC7F /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011ECECA303CAB2000BBDC7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011ECFAA303CAB2000BBDC7F /* content.js in Resources */,
+				011ECF95303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff in Resources */,
+				011ECFB4303CAB2000BBDC7F /* outfit-latin-ext-400-normal.woff2 in Resources */,
+				011ECF88303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff2 in Resources */,
+				011ECF61303CAB2000BBDC7F /* background.js in Resources */,
+				011ECF66303CAB2000BBDC7F /* popup.html in Resources */,
+				011ECFA2303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff2 in Resources */,
+				011ECF59303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff in Resources */,
+				011ECFAE303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff2 in Resources */,
+				011ECF6D303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff2 in Resources */,
+				011ECF5F303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff2 in Resources */,
+				011ECF53303CAB2000BBDC7F /* fira-code-latin-400-normal.woff in Resources */,
+				011ECFA0303CAB2000BBDC7F /* inter-greek-600-normal.woff2 in Resources */,
+				011ECF67303CAB2000BBDC7F /* inter-greek-700-normal.woff in Resources */,
+				011ECF84303CAB2000BBDC7F /* outfit-latin-700-normal.woff2 in Resources */,
+				011ECF9C303CAB2000BBDC7F /* outfit-latin-900-normal.woff in Resources */,
+				011ECFB7303CAB2000BBDC7F /* inter-greek-500-normal.woff2 in Resources */,
+				011ECF92303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff in Resources */,
+				011ECFAD303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff2 in Resources */,
+				011ECF68303CAB2000BBDC7F /* inter-cyrillic-500-normal.woff in Resources */,
+				011ECFB6303CAB2000BBDC7F /* outfit-latin-400-normal.woff in Resources */,
+				011ECF83303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff2 in Resources */,
+				011ECF80303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff in Resources */,
+				011ECF89303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff in Resources */,
+				011ECFB9303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff in Resources */,
+				011ECF97303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff2 in Resources */,
+				011ECF5B303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff in Resources */,
+				011ECF64303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff2 in Resources */,
+				011ECF70303CAB2000BBDC7F /* fira-code-greek-ext-500-normal.woff in Resources */,
+				011ECF76303CAB2000BBDC7F /* fira-code-greek-400-normal.woff in Resources */,
+				011ECF5A303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff2 in Resources */,
+				011ECF7B303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff2 in Resources */,
+				011ECF69303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff in Resources */,
+				011ECF6B303CAB2000BBDC7F /* fira-code-symbols2-400-normal.woff in Resources */,
+				011ECF91303CAB2000BBDC7F /* outfit-latin-ext-700-normal.woff2 in Resources */,
+				011ECF9A303CAB2000BBDC7F /* style.css in Resources */,
+				011ECF60303CAB2000BBDC7F /* inter-latin-700-normal.woff2 in Resources */,
+				011ECFA7303CAB2000BBDC7F /* inter-greek-ext-700-normal.woff in Resources */,
+				011ECFA6303CAB2000BBDC7F /* outfit-latin-400-normal.woff2 in Resources */,
+				011ECF57303CAB2000BBDC7F /* inter-latin-400-normal.woff in Resources */,
+				011ECF78303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff in Resources */,
+				011ECFAC303CAB2000BBDC7F /* shared.js in Resources */,
+				011ECF82303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff in Resources */,
+				011ECF71303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff in Resources */,
+				011ECFA5303CAB2000BBDC7F /* inter-latin-600-normal.woff in Resources */,
+				011ECF7A303CAB2000BBDC7F /* inter-greek-400-normal.woff in Resources */,
+				011ECFAB303CAB2000BBDC7F /* inter-greek-400-normal.woff2 in Resources */,
+				011ECF8C303CAB2000BBDC7F /* fira-code-latin-ext-500-normal.woff2 in Resources */,
+				011ECF8E303CAB2000BBDC7F /* fira-code-greek-500-normal.woff in Resources */,
+				011ECF5E303CAB2000BBDC7F /* outfit-latin-600-normal.woff in Resources */,
+				011ECF96303CAB2000BBDC7F /* inter-vietnamese-500-normal.woff2 in Resources */,
+				011ECF7D303CAB2000BBDC7F /* inter-cyrillic-ext-600-normal.woff in Resources */,
+				011ECF65303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff2 in Resources */,
+				011ECFAF303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff2 in Resources */,
+				011ECF51303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff2 in Resources */,
+				011ECF74303CAB2000BBDC7F /* inter-greek-ext-400-normal.woff2 in Resources */,
+				011ECF50303CAB2000BBDC7F /* inter-latin-600-normal.woff2 in Resources */,
+				011ECF9D303CAB2000BBDC7F /* outfit-latin-600-normal.woff2 in Resources */,
+				011ECF5D303CAB2000BBDC7F /* inter-latin-700-normal.woff in Resources */,
+				011ECF6C303CAB2000BBDC7F /* options.js in Resources */,
+				011ECF8D303CAB2000BBDC7F /* inter-greek-500-normal.woff in Resources */,
+				011ECF62303CAB2000BBDC7F /* fira-code-greek-400-normal.woff2 in Resources */,
+				011ECF4F303CAB2000BBDC7F /* fira-code-greek-500-normal.woff2 in Resources */,
+				011ECF93303CAB2000BBDC7F /* inter-greek-600-normal.woff in Resources */,
+				011ECFB3303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff2 in Resources */,
+				011ECF56303CAB2000BBDC7F /* inter-greek-ext-600-normal.woff2 in Resources */,
+				011ECF9E303CAB2000BBDC7F /* inter-vietnamese-600-normal.woff in Resources */,
+				011ECFB5303CAB2000BBDC7F /* inter-latin-500-normal.woff in Resources */,
+				011ECF75303CAB2000BBDC7F /* inter-latin-400-normal.woff2 in Resources */,
+				011ECF8B303CAB2000BBDC7F /* inter-cyrillic-ext-500-normal.woff2 in Resources */,
+				011ECF77303CAB2000BBDC7F /* inter-cyrillic-600-normal.woff2 in Resources */,
+				011ECFB0303CAB2000BBDC7F /* assets in Resources */,
+				011ECF55303CAB2000BBDC7F /* inter-greek-ext-500-normal.woff in Resources */,
+				011ECF79303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff in Resources */,
+				011ECF8F303CAB2000BBDC7F /* outfit-latin-ext-600-normal.woff2 in Resources */,
+				011ECFA8303CAB2000BBDC7F /* inter-latin-ext-600-normal.woff2 in Resources */,
+				011ECFB1303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff in Resources */,
+				011ECF63303CAB2000BBDC7F /* fira-code-cyrillic-500-normal.woff2 in Resources */,
+				011ECF98303CAB2000BBDC7F /* inter-cyrillic-ext-400-normal.woff2 in Resources */,
+				011ECF94303CAB2000BBDC7F /* inter-cyrillic-400-normal.woff in Resources */,
+				011ECF81303CAB2000BBDC7F /* inter-greek-700-normal.woff2 in Resources */,
+				011ECF99303CAB2000BBDC7F /* outfit-latin-900-normal.woff2 in Resources */,
+				011ECF58303CAB2000BBDC7F /* popup.js in Resources */,
+				011ECF6F303CAB2000BBDC7F /* inter-vietnamese-700-normal.woff in Resources */,
+				011ECFA9303CAB2000BBDC7F /* fira-code-latin-ext-400-normal.woff in Resources */,
+				011ECF8A303CAB2000BBDC7F /* inter-cyrillic-700-normal.woff in Resources */,
+				011ECF87303CAB2000BBDC7F /* inter-cyrillic-ext-700-normal.woff in Resources */,
+				011ECFA4303CAB2000BBDC7F /* outfit-latin-700-normal.woff in Resources */,
+				011ECF72303CAB2000BBDC7F /* inter-vietnamese-400-normal.woff in Resources */,
+				011ECF7F303CAB2000BBDC7F /* fira-code-latin-400-normal.woff2 in Resources */,
+				011ECF5C303CAB2000BBDC7F /* fira-code-cyrillic-ext-500-normal.woff2 in Resources */,
+				011ECFB8303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff2 in Resources */,
+				011ECF6E303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff in Resources */,
+				011ECFA3303CAB2000BBDC7F /* options.html in Resources */,
+				011ECFA1303CAB2000BBDC7F /* fira-code-latin-500-normal.woff2 in Resources */,
+				011ECF6A303CAB2000BBDC7F /* inter-latin-500-normal.woff2 in Resources */,
+				011ECF90303CAB2000BBDC7F /* fira-code-symbols2-500-normal.woff in Resources */,
+				011ECF54303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff2 in Resources */,
+				011ECF73303CAB2000BBDC7F /* fira-code-cyrillic-ext-400-normal.woff in Resources */,
+				011ECF9B303CAB2000BBDC7F /* manifest.json in Resources */,
+				011ECF85303CAB2000BBDC7F /* inter-latin-ext-700-normal.woff in Resources */,
+				011ECF7C303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff2 in Resources */,
+				011ECFBA303CAB2000BBDC7F /* fira-code-latin-500-normal.woff in Resources */,
+				011ECF86303CAB2000BBDC7F /* fira-code-greek-ext-400-normal.woff in Resources */,
+				011ECFB2303CAB2000BBDC7F /* outfit-latin-ext-900-normal.woff in Resources */,
+				011ECF9F303CAB2000BBDC7F /* inter-latin-ext-400-normal.woff in Resources */,
+				011ECF7E303CAB2000BBDC7F /* inter-latin-ext-500-normal.woff2 in Resources */,
+				011ECF52303CAB2000BBDC7F /* fira-code-cyrillic-400-normal.woff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		011ECEAD303CAB1F00BBDC7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011ECEC1303CAB1F00BBDC7F /* ViewController.swift in Sources */,
+				011ECEB5303CAB1F00BBDC7F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		011ECEC8303CAB2000BBDC7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011ECED2303CAB2000BBDC7F /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		011ECECF303CAB2000BBDC7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 011ECECB303CAB2000BBDC7F /* Hister Extension */;
+			targetProxy = 011ECECE303CAB2000BBDC7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		011ECEB7303CAB1F00BBDC7F /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				011ECEB8303CAB1F00BBDC7F /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		011ECEC2303CAB1F00BBDC7F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				011ECEC3303CAB1F00BBDC7F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		011ECED4303CAB2000BBDC7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		011ECED5303CAB2000BBDC7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		011ECED7303CAB2000BBDC7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hister Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hister Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.hister.safari-unofficial.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		011ECED8303CAB2000BBDC7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hister Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hister Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.hister.safari-unofficial.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		011ECEDB303CAB2000BBDC7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hister/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hister;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.hister.safari-unofficial";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		011ECEDC303CAB2000BBDC7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hister/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hister;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.hister.safari-unofficial";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		011ECEAC303CAB1F00BBDC7F /* Build configuration list for PBXProject "Hister" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011ECED4303CAB2000BBDC7F /* Debug */,
+				011ECED5303CAB2000BBDC7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		011ECED6303CAB2000BBDC7F /* Build configuration list for PBXNativeTarget "Hister Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011ECED7303CAB2000BBDC7F /* Debug */,
+				011ECED8303CAB2000BBDC7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		011ECEDA303CAB2000BBDC7F /* Build configuration list for PBXNativeTarget "Hister" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011ECEDB303CAB2000BBDC7F /* Debug */,
+				011ECEDC303CAB2000BBDC7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 011ECEA9303CAB1F00BBDC7F /* Project object */;
+}

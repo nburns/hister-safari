@@ -1,0 +1,34 @@
+{
+  "$comment": "Safari-only overrides merged over vendor/hister/webui/ext/dist/manifest.json by scripts/patch-manifest.mjs. Keys with null values are deleted from the merged output.",
+  "key": null,
+  "$comment_background": "Chrome's manifest sets service_worker at plugin time. Safari 17+ supports MV3 service_worker natively, so no change is needed here. The Safari-specific runtime shim is concatenated into background.js by scripts/build.sh so it runs before the upstream code.",
+  "commands": {
+    "index-current-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+I",
+        "mac": "Command+Shift+I"
+      },
+      "description": "Index current page"
+    },
+    "disable-indexing-current-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B",
+        "mac": "Command+Shift+B"
+      },
+      "description": "Disable indexing for current page"
+    },
+    "disable-indexing-current-domain": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Disable indexing for current domain"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

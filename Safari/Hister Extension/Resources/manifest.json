@@ -1,0 +1,71 @@
+{
+  "manifest_version": 3,
+  "name": "Hister",
+  "version": "0.28.0",
+  "description": "Web history on steroids",
+  "icons": {
+    "128": "assets/icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "128": "assets/icons/icon128.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Hister"
+  },
+  "commands": {
+    "index-current-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+I",
+        "mac": "Command+Shift+I"
+      },
+      "description": "Index current page"
+    },
+    "disable-indexing-current-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B",
+        "mac": "Command+Shift+B"
+      },
+      "description": "Disable indexing for current page"
+    },
+    "disable-indexing-current-domain": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Disable indexing for current domain"
+    }
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ]
+}

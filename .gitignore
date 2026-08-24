@@ -1,0 +1,6 @@
+build/
+Safari-generated/
+node_modules/
+.DS_Store
+*.xcuserdatad/
+xcuserdata/
