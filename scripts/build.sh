@@ -143,12 +143,24 @@ if [[ -n "${APPLE_TEAM_ID:-}" ]]; then
 fi
 xcodebuild "${XCODEBUILD_ARGS[@]}" archive
 
-echo "==> xcodebuild exportArchive"
-xcodebuild \
-    -exportArchive \
-    -archivePath build/Hister.xcarchive \
-    -exportOptionsPlist Safari/ExportOptions.plist \
-    -exportPath build/export
+# ExportOptions.plist mandates a Developer ID Application cert, which we
+# don't have in the keychain for ad-hoc builds (unsigned local dev, PR CI).
+# For those, skip exportArchive and pull the .app straight out of the
+# xcarchive instead. The archive itself already exercises the full compile
+# + link + embed-extension + sign path we care about verifying.
+mkdir -p build/export
+rm -rf build/export/Hister.app
+if [[ "$CODE_SIGN_IDENTITY" == "-" ]]; then
+    echo "==> Ad-hoc build; copying .app from xcarchive (skipping exportArchive)"
+    cp -R build/Hister.xcarchive/Products/Applications/Hister.app build/export/
+else
+    echo "==> xcodebuild exportArchive"
+    xcodebuild \
+        -exportArchive \
+        -archivePath build/Hister.xcarchive \
+        -exportOptionsPlist Safari/ExportOptions.plist \
+        -exportPath build/export
+fi
 
 if [[ "${NOTARIZE:-0}" == "1" ]]; then
     DMG="build/Hister-${DMG_VERSION}.dmg"
