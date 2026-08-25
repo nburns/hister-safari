@@ -160,12 +160,19 @@ jobs:
           set -euo pipefail
           SHORT_SHA="${COMMIT_SHA:0:7}"
           MARKER="<!-- hister-ci-build-link -->"
-          BODY="${MARKER}
-          **Unsigned CI build ready** for commit \`${SHORT_SHA}\`.
-
-          [Download Hister.app (zipped)](${ARTIFACT_URL}) — or open the [run summary](${RUN_URL}) and grab it from the Artifacts section.
-
-          Because this build is ad-hoc signed, macOS Gatekeeper will refuse to open it. To try it locally: \`xattr -dr com.apple.quarantine ~/Downloads/Hister.app\` after unzipping."
+          # Build the comment body line-by-line so YAML block-scalar indentation
+          # can't bleed into the rendered markdown.
+          BODY=$(printf '%s\n' \
+              "${MARKER}" \
+              "**Unsigned CI build ready** for commit \`${SHORT_SHA}\`." \
+              "" \
+              "[Download Hister.app (zipped)](${ARTIFACT_URL}) — or open the [run summary](${RUN_URL}) and grab it from the Artifacts section." \
+              "" \
+              "Because this build is ad-hoc signed, macOS Gatekeeper will refuse to open it. After unzipping, strip the quarantine attribute:" \
+              "" \
+              '```sh' \
+              'xattr -dr com.apple.quarantine ~/Downloads/Hister.app' \
+              '```')
 
           # Find and update prior bot comment on this PR (identified by the
           # HTML marker), or create a new one if none exists.
