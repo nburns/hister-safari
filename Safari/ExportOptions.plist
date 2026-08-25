@@ -2,15 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>method</key>
-    <string>developer-id</string>
-    <key>signingStyle</key>
-    <string>manual</string>
-    <key>teamID</key>
-    <string>REPLACE_WITH_TEAM_ID</string>
-    <key>signingCertificate</key>
-    <string>Developer ID Application</string>
-    <key>destination</key>
-    <string>export</string>
+	<key>destination</key>
+	<string>export</string>
+	<key>method</key>
+	<string>developer-id</string>
+	<key>signingCertificate</key>
+	<string>Developer ID Application</string>
+	<key>signingStyle</key>
+	<string>manual</string>
+	<key>teamID</key>
+	<string>45T95LQM6S</string>
 </dict>
 </plist>

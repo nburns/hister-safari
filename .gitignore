@@ -4,3 +4,6 @@ node_modules/
 .DS_Store
 *.xcuserdatad/
 xcuserdata/
+.envrc.local
+.signing/
+Safari/Hister Extension/Resources/

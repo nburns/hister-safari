@@ -18,7 +18,7 @@ Upstream source is never modified; the wrapper only patches the produced `dist/`
 
 Once a release is published:
 
-1. Download `Hister-<version>.dmg` from the [Releases](https://github.com/YOUR-ORG/hister-safari/releases) page.
+1. Download `Hister-<version>.dmg` from the [Releases](https://github.com/nburns/hister-safari/releases) page.
 2. Open the DMG and drag `Hister.app` to `/Applications`.
 3. Launch `Hister.app` once. It will prompt you to open Safari's extension preferences.
 4. In Safari → Settings → Extensions, enable **Hister**.
@@ -31,7 +31,7 @@ Because the app is signed with an Apple Developer ID and notarized, there is no 
 Requires: macOS with Xcode 15+, Node.js 20+, an Apple Developer account (for signing).
 
 ```bash
-git clone --recurse-submodules https://github.com/YOUR-ORG/hister-safari.git
+git clone --recurse-submodules https://github.com/nburns/hister-safari.git
 cd hister-safari
 scripts/build.sh              # unsigned local build (CODE_SIGN_IDENTITY=- by default)
 ```

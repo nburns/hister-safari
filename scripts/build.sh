@@ -28,6 +28,13 @@ UPSTREAM_ROOT="vendor/hister"
 UPSTREAM_EXT="$UPSTREAM_ROOT/webui/ext"
 RESOURCES="Safari/Hister Extension/Resources"
 
+# Version stamp: 0.{day-of-year}.{hour}.{minute}. Applied to both the Safari
+# host app (via MARKETING_VERSION/CURRENT_PROJECT_VERSION at xcodebuild time)
+# and the extension's manifest.json (via post-build overwrite). Override by
+# exporting HISTER_VERSION to pin a specific value for reproducible builds.
+VERSION="${HISTER_VERSION:-0.$(date +%-j.%-H.%-M)}"
+echo "==> Version: $VERSION"
+
 if [[ ! -d "$UPSTREAM_EXT" ]]; then
     echo "error: $UPSTREAM_EXT missing; did you 'git submodule update --init'?" >&2
     exit 1
@@ -55,6 +62,16 @@ node scripts/patch-manifest.mjs \
     "$UPSTREAM_EXT/dist/manifest.json" \
     patches/manifest.safari.json \
     "$RESOURCES/manifest.json"
+
+# Stamp the extension manifest with the same version as the host app.
+python3 -c '
+import json, sys
+p = sys.argv[1]
+m = json.load(open(p))
+m["version"] = sys.argv[2]
+json.dump(m, open(p, "w"), indent=2)
+open(p, "a").write("\n")
+' "$RESOURCES/manifest.json" "$VERSION"
 
 # Prepend the Safari shim so it runs before upstream background code. The
 # service_worker entry in the manifest still points at background.js.
@@ -100,13 +117,24 @@ CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY:--}"
 
 echo "==> xcodebuild archive (CODE_SIGN_IDENTITY=$CODE_SIGN_IDENTITY)"
 mkdir -p build
-xcodebuild \
-    -project Safari/Hister.xcodeproj \
-    -scheme Hister \
-    -configuration Release \
-    -archivePath build/Hister.xcarchive \
-    CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" \
-    archive
+XCODEBUILD_ARGS=(
+    -project Safari/Hister.xcodeproj
+    -scheme Hister
+    -configuration Release
+    -archivePath build/Hister.xcarchive
+    CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY"
+    MARKETING_VERSION="$VERSION"
+    CURRENT_PROJECT_VERSION="$VERSION"
+)
+# Switch off Xcode automatic signing when we're providing an explicit identity
+# (i.e. a real Developer ID Application build, not the ad-hoc default).
+if [[ "$CODE_SIGN_IDENTITY" != "-" ]]; then
+    XCODEBUILD_ARGS+=(CODE_SIGN_STYLE=Manual)
+fi
+if [[ -n "${APPLE_TEAM_ID:-}" ]]; then
+    XCODEBUILD_ARGS+=(DEVELOPMENT_TEAM="$APPLE_TEAM_ID")
+fi
+xcodebuild "${XCODEBUILD_ARGS[@]}" archive
 
 echo "==> xcodebuild exportArchive"
 xcodebuild \
@@ -116,12 +144,20 @@ xcodebuild \
     -exportPath build/export
 
 if [[ "${NOTARIZE:-0}" == "1" ]]; then
-    "$REPO_ROOT/scripts/notarize.sh" build/export/Hister.app
-    VERSION="$(defaults read "$REPO_ROOT/build/export/Hister.app/Contents/Info" CFBundleShortVersionString)"
-    hdiutil create -volname Hister -srcfolder build/export -ov -format UDZO \
-        "build/Hister-${VERSION}.dmg"
-    xcrun stapler staple "build/Hister-${VERSION}.dmg"
-    echo "==> Built build/Hister-${VERSION}.dmg"
+    APP_VERSION="$(defaults read "$REPO_ROOT/build/export/Hister.app/Contents/Info" CFBundleShortVersionString)"
+    DMG="build/Hister-${APP_VERSION}.dmg"
+
+    echo "==> Packaging DMG"
+    # Stage a clean directory holding only Hister.app plus a /Applications
+    # symlink so the DMG opens to the standard drag-to-install layout.
+    DMG_STAGE="$(mktemp -d)"
+    trap 'rm -rf -- "$DMG_STAGE"' EXIT
+    cp -R build/export/Hister.app "$DMG_STAGE/"
+    ln -s /Applications "$DMG_STAGE/Applications"
+    hdiutil create -volname Hister -srcfolder "$DMG_STAGE" -ov -format UDZO "$DMG"
+
+    "$REPO_ROOT/scripts/notarize.sh" "$DMG"
+    echo "==> Built $DMG"
 else
     echo "==> Unsigned/ad-hoc build available at build/export/Hister.app"
 fi
