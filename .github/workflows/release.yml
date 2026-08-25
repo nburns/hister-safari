@@ -2,12 +2,12 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
+    tags: ['v*']
   workflow_dispatch:
     inputs:
       version:
-        description: 'HISTER_VERSION override (leave blank for day-of-year stamp)'
+        description: 'HISTER_VERSION override (leave blank for day-of-year stamp; dispatch never publishes a release, only uploads an artifact)'
         required: false
         default: ''
 
@@ -55,6 +55,31 @@ jobs:
               -c "Set :teamID ${{ secrets.APPLE_TEAM_ID }}" \
               Safari/ExportOptions.plist
 
+      # Resolve HISTER_VERSION per event:
+      #   tag push       -> v0.0.1[-rc.N] (from git ref)
+      #   main push      -> v0.<day>.<h>.<m> (auto)
+      #   dispatch input -> whatever user typed, or blank -> day stamp
+      - name: Resolve version
+        id: version
+        env:
+          EVENT: ${{ github.event_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          DISPATCH_INPUT: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT" == "push" && "$REF_TYPE" == "tag" ]]; then
+              V="$REF_NAME"
+          elif [[ "$EVENT" == "push" ]]; then
+              V="v0.$(date +%-j.%-H.%-M)"
+          elif [[ -n "$DISPATCH_INPUT" ]]; then
+              V="$DISPATCH_INPUT"
+          else
+              V=""  # build.sh will fall back to day-of-year
+          fi
+          echo "hister_version=$V" >> "$GITHUB_OUTPUT"
+          echo "==> HISTER_VERSION=$V"
+
       - name: Build, sign, notarize
         env:
           CODE_SIGN_IDENTITY: Developer ID Application
@@ -62,9 +87,7 @@ jobs:
           APPLE_NOTARY_USER: ${{ secrets.APPLE_NOTARY_USER }}
           APPLE_NOTARY_PASSWORD: ${{ secrets.APPLE_NOTARY_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          # Tag pushes: ref_name is the tag ("v0.0.1", "v0.0.1-rc.1").
-          # Manual dispatch: the input, or empty for day-of-year stamp.
-          HISTER_VERSION: ${{ github.event_name == 'push' && github.ref_name || inputs.version }}
+          HISTER_VERSION: ${{ steps.version.outputs.hister_version }}
         run: scripts/build.sh
 
       - name: Release notes
@@ -73,18 +96,34 @@ jobs:
           UPSTREAM_SHA="$(git -C vendor/hister rev-parse HEAD)"
           {
               echo "notes<<EOF"
+              if [[ "${{ github.ref_type }}" != "tag" ]]; then
+                  echo "**Prerelease** auto-published from \`main@${GITHUB_SHA::7}\`."
+                  echo
+              fi
               echo "Unofficial Safari build of Hister."
               echo
               echo "Built from upstream commit \`$UPSTREAM_SHA\`."
-              echo "This build is signed with an Apple Developer ID and notarized by Apple."
+              echo "Signed with an Apple Developer ID and notarized by Apple."
               echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      # Publish paths -----------------------------------------------------
+
       - name: Publish release
+        if: github.event_name == 'push'
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228  # v3.0.2
         with:
           files: build/Hister-*.dmg
+          tag_name: ${{ steps.version.outputs.hister_version }}
+          # main pushes are prereleases; explicit v* tags are full releases.
+          prerelease: ${{ github.ref_type != 'tag' }}
           body: ${{ steps.notes.outputs.notes }}
           fail_on_unmatched_files: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifact (dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: hister-dmg
+          path: build/Hister-*.dmg
+          if-no-files-found: error
