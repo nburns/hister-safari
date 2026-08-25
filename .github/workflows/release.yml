@@ -139,13 +139,26 @@ jobs:
 
       # PR-only: publish the unsigned .app as an artifact and drop a sticky
       # comment on the PR pointing reviewers at the download.
+      #
+      # Stage into a dedicated dir so the artifact zip preserves the
+      # `Hister.app/` wrapper directory. If we pointed upload-artifact at
+      # Hister.app itself, the .app's contents would land at the artifact
+      # root (Contents/, Frameworks/, ...) and macOS wouldn't recognise the
+      # unzipped tree as an app bundle.
+      - name: Stage PR artifact
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          mkdir -p build/pr-artifact
+          cp -R build/export/Hister.app build/pr-artifact/
+
       - name: Upload artifact (PR)
         id: pr_artifact
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
           name: hister-pr-${{ github.event.pull_request.number }}-${{ github.run_number }}
-          path: build/export/Hister.app
+          path: build/pr-artifact
           if-no-files-found: error
 
       - name: Post download link on PR
@@ -160,6 +173,12 @@ jobs:
           set -euo pipefail
           SHORT_SHA="${COMMIT_SHA:0:7}"
           MARKER="<!-- hister-ci-build-link -->"
+          # artifact-url is the browser page (…/artifacts/<id>). The API zip
+          # endpoint lives at /repos/…/actions/artifacts/<id>/zip and requires
+          # auth, so the curl below uses `gh auth token`.
+          ARTIFACT_ID="${ARTIFACT_URL##*/}"
+          ONELINER="curl -sL -H \"Authorization: Bearer \$(gh auth token)\" \"https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip\" -o /tmp/hister.zip && unzip -qo /tmp/hister.zip -d /tmp/hister && xattr -dr com.apple.quarantine /tmp/hister/Hister.app && open /tmp/hister/Hister.app"
+
           # Build the comment body line-by-line so YAML block-scalar indentation
           # can't bleed into the rendered markdown.
           BODY=$(printf '%s\n' \
@@ -168,10 +187,16 @@ jobs:
               "" \
               "[Download Hister.app (zipped)](${ARTIFACT_URL}) — or open the [run summary](${RUN_URL}) and grab it from the Artifacts section." \
               "" \
-              "Because this build is ad-hoc signed, macOS Gatekeeper will refuse to open it. After unzipping, strip the quarantine attribute:" \
+              "One-liner to download, unquarantine, and launch (requires \`gh auth login\` once):" \
               "" \
               '```sh' \
-              'xattr -dr com.apple.quarantine ~/Downloads/Hister.app' \
+              "${ONELINER}" \
+              '```' \
+              "" \
+              "Or if you already have the zip locally, just strip the quarantine attribute and open:" \
+              "" \
+              '```sh' \
+              'unzip -qo ~/Downloads/hister-pr-*.zip -d /tmp/hister && xattr -dr com.apple.quarantine /tmp/hister/Hister.app && open /tmp/hister/Hister.app' \
               '```')
 
           # Find and update prior bot comment on this PR (identified by the
