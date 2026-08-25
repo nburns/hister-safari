@@ -96,10 +96,6 @@ jobs:
           UPSTREAM_SHA="$(git -C vendor/hister rev-parse HEAD)"
           {
               echo "notes<<EOF"
-              if [[ "${{ github.ref_type }}" != "tag" ]]; then
-                  echo "**Prerelease** auto-published from \`main@${GITHUB_SHA::7}\`."
-                  echo
-              fi
               echo "Unofficial Safari build of Hister."
               echo
               echo "Built from upstream commit \`$UPSTREAM_SHA\`."
@@ -115,8 +111,6 @@ jobs:
         with:
           files: build/Hister-*.dmg
           tag_name: ${{ steps.version.outputs.hister_version }}
-          # main pushes are prereleases; explicit v* tags are full releases.
-          prerelease: ${{ github.ref_type != 'tag' }}
           body: ${{ steps.notes.outputs.notes }}
           fail_on_unmatched_files: true
 
