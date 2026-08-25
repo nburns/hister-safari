@@ -2,6 +2,8 @@
 
 > **This is an unofficial Safari port of the [Hister](https://github.com/asciimoo/hister) browser extension.** It is not affiliated with or endorsed by the upstream Hister project. The upstream maintainer has declined to include Safari support in-tree (see [issue #49](https://github.com/asciimoo/hister/issues/49)); this repository exists to make a signed, notarized Safari build available anyway.
 
+[Hister](https://github.com/asciimoo/hister) is a self-hosted personal search engine that indexes the full contents of pages you visit (and PDFs you open) so you can search them later. The browser extension is what sends visited pages to your Hister server; this repo packages that extension for Safari on macOS.
+
 The wrapper adds no telemetry and makes no network calls beyond what upstream Hister does.
 
 ## What this repo contains
@@ -16,6 +18,8 @@ Upstream source is never modified; the wrapper only patches the produced `dist/`
 
 ## Install (end users)
 
+Requires macOS 26.4 (Tahoe) or later, and a running [Hister server](https://github.com/asciimoo/hister) you can reach from your Mac.
+
 Once a release is published:
 
 1. Download `Hister-<version>.dmg` from the [Releases](https://github.com/nburns/hister-safari/releases) page.
@@ -25,6 +29,10 @@ Once a release is published:
 5. Click the Hister toolbar icon and enter the URL of your Hister server.
 
 Because the app is signed with an Apple Developer ID and notarized, there is no need to enable "Allow unsigned extensions" and the extension stays enabled across Safari restarts.
+
+### Uninstall
+
+Quit Safari, drag `Hister.app` from `/Applications` to the Trash, then reopen Safari. Any extension settings stored in Safari are removed with the containing app.
 
 ## Build (developers)
 
