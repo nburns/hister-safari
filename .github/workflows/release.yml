@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'HISTER_VERSION override (leave blank for day-of-year stamp)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -13,11 +18,14 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      # Third-party actions pinned to full commit SHAs (defense against
+      # tag-mutation / action-repo compromise). Version tags in comments; bump
+      # via `gh api /repos/<owner>/<repo>/git/refs/tags/<tag>`.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           submodules: recursive
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
         with:
           node-version: '20'
 
@@ -54,6 +62,9 @@ jobs:
           APPLE_NOTARY_USER: ${{ secrets.APPLE_NOTARY_USER }}
           APPLE_NOTARY_PASSWORD: ${{ secrets.APPLE_NOTARY_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # Tag pushes: ref_name is the tag ("v0.0.1", "v0.0.1-rc.1").
+          # Manual dispatch: the input, or empty for day-of-year stamp.
+          HISTER_VERSION: ${{ github.event_name == 'push' && github.ref_name || inputs.version }}
         run: scripts/build.sh
 
       - name: Release notes
@@ -70,7 +81,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Publish release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228  # v3.0.2
         with:
           files: build/Hister-*.dmg
           body: ${{ steps.notes.outputs.notes }}

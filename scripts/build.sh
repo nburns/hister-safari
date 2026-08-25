@@ -28,12 +28,28 @@ UPSTREAM_ROOT="vendor/hister"
 UPSTREAM_EXT="$UPSTREAM_ROOT/webui/ext"
 RESOURCES="Safari/Hister Extension/Resources"
 
-# Version stamp: 0.{day-of-year}.{hour}.{minute}. Applied to both the Safari
-# host app (via MARKETING_VERSION/CURRENT_PROJECT_VERSION at xcodebuild time)
-# and the extension's manifest.json (via post-build overwrite). Override by
-# exporting HISTER_VERSION to pin a specific value for reproducible builds.
-VERSION="${HISTER_VERSION:-0.$(date +%-j.%-H.%-M)}"
-echo "==> Version: $VERSION"
+# Version:
+#   HISTER_VERSION unset      -> 0.<day-of-year>.<hour>.<minute> for local dev.
+#   HISTER_VERSION="v0.0.1"   -> app is 0.0.1, DMG is Hister-v0.0.1.dmg.
+#   HISTER_VERSION="v0.0.1-rc.1" -> app is 0.0.1, DMG is Hister-v0.0.1-rc.1.dmg
+#     (Apple's CFBundleShortVersionString and Chrome extension manifest.version
+#      accept only period-separated integers, so we strip the 'v' prefix and
+#      anything after the first '-' for the on-disk version fields; the full
+#      tag is preserved in the DMG filename so releases stay unambiguous.)
+if [[ -n "${HISTER_VERSION:-}" ]]; then
+    DMG_VERSION="$HISTER_VERSION"
+    APP_VERSION="${HISTER_VERSION#v}"
+    APP_VERSION="${APP_VERSION%%-*}"
+    if ! [[ "$APP_VERSION" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+        echo "error: HISTER_VERSION '$HISTER_VERSION' does not reduce to N.N.N" >&2
+        echo "       (stripped to '$APP_VERSION')" >&2
+        exit 1
+    fi
+else
+    APP_VERSION="0.$(date +%-j.%-H.%-M)"
+    DMG_VERSION="$APP_VERSION"
+fi
+echo "==> App version: $APP_VERSION   DMG version: $DMG_VERSION"
 
 if [[ ! -d "$UPSTREAM_EXT" ]]; then
     echo "error: $UPSTREAM_EXT missing; did you 'git submodule update --init'?" >&2
@@ -71,7 +87,7 @@ m = json.load(open(p))
 m["version"] = sys.argv[2]
 json.dump(m, open(p, "w"), indent=2)
 open(p, "a").write("\n")
-' "$RESOURCES/manifest.json" "$VERSION"
+' "$RESOURCES/manifest.json" "$APP_VERSION"
 
 # Prepend the Safari shim so it runs before upstream background code. The
 # service_worker entry in the manifest still points at background.js.
@@ -123,8 +139,8 @@ XCODEBUILD_ARGS=(
     -configuration Release
     -archivePath build/Hister.xcarchive
     CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY"
-    MARKETING_VERSION="$VERSION"
-    CURRENT_PROJECT_VERSION="$VERSION"
+    MARKETING_VERSION="$APP_VERSION"
+    CURRENT_PROJECT_VERSION="$APP_VERSION"
 )
 # Switch off Xcode automatic signing when we're providing an explicit identity
 # (i.e. a real Developer ID Application build, not the ad-hoc default).
@@ -144,8 +160,7 @@ xcodebuild \
     -exportPath build/export
 
 if [[ "${NOTARIZE:-0}" == "1" ]]; then
-    APP_VERSION="$(defaults read "$REPO_ROOT/build/export/Hister.app/Contents/Info" CFBundleShortVersionString)"
-    DMG="build/Hister-${APP_VERSION}.dmg"
+    DMG="build/Hister-${DMG_VERSION}.dmg"
 
     echo "==> Packaging DMG"
     # Stage a clean directory holding only Hister.app plus a /Applications
