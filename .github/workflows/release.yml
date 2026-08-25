@@ -32,6 +32,9 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
 
+      - name: Install xcodegen
+        run: brew install xcodegen
+
       - name: Import Developer ID cert
         env:
           CERT_P12_BASE64: ${{ secrets.APPLE_DEVELOPER_ID_CERT_P12 }}

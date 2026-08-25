@@ -112,22 +112,13 @@ if [[ "${SKIP_XCODE:-0}" == "1" ]]; then
     exit 0
 fi
 
-if [[ ! -d "Safari/Hister.xcodeproj" ]]; then
-    cat >&2 <<'EOF'
-==> Safari/Hister.xcodeproj not found. Regenerate it with:
-
-      xcrun safari-web-extension-converter \
-          --project-location Safari-generated \
-          --app-name Hister \
-          --bundle-identifier org.hister.safari-unofficial \
-          --swift --macos-only --copy-resources \
-          --no-open --no-prompt --force \
-          "Safari/Hister Extension/Resources"
-
-    Then move Safari-generated/Hister/* into Safari/ and commit.
-EOF
-    exit 0
+if ! command -v xcodegen >/dev/null 2>&1; then
+    echo "error: xcodegen not found on PATH. Install with 'brew install xcodegen'" >&2
+    exit 1
 fi
+
+echo "==> Generating Safari/Hister.xcodeproj with xcodegen"
+(cd -- Safari && xcodegen generate --quiet)
 
 CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY:--}"
 

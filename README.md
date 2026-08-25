@@ -10,7 +10,7 @@ The wrapper adds no telemetry and makes no network calls beyond what upstream Hi
 
 - `vendor/hister/` — the upstream Hister source, pinned to a specific commit as a git submodule.
 - `patches/` — Safari-only overrides applied to the upstream extension bundle at build time (manifest tweaks, a small background-script shim).
-- `Safari/` — Xcode project that wraps the built extension into a macOS Safari Web Extension host app.
+- `Safari/` — host app + Safari Web Extension target sources. The `Hister.xcodeproj` is generated on demand from `Safari/project.yml` by [XcodeGen](https://github.com/yonki/XcodeGen) and is not checked in.
 - `scripts/` — build and notarization pipeline.
 - `.github/workflows/release.yml` — CI that produces a signed DMG on tagged releases.
 
@@ -36,13 +36,18 @@ Quit Safari, drag `Hister.app` from `/Applications` to the Trash, then reopen Sa
 
 ## Build (developers)
 
-Requires: macOS with Xcode 15+, Node.js 20+, an Apple Developer account (for signing).
+Requires: macOS with Xcode 15+, plus the tools in `Brewfile` (Node.js, XcodeGen). An Apple Developer account is needed for signed builds.
 
 ```bash
 git clone --recurse-submodules https://github.com/nburns/hister-safari.git
 cd hister-safari
+brew bundle                   # installs xcodegen + node
 scripts/build.sh              # unsigned local build (CODE_SIGN_IDENTITY=- by default)
 ```
+
+`scripts/build.sh` regenerates `Safari/Hister.xcodeproj` from `Safari/project.yml` on every run, so if you need to open Xcode directly, run `xcodegen generate` inside `Safari/` first (or just run the build script once).
+
+Edit target/build settings by modifying `Safari/project.yml` — never by editing the generated `.xcodeproj`, since your changes will be wiped on the next generate. See [AGENTS.md](AGENTS.md) for the full contributor guide.
 
 For a signed build, export your signing credentials and re-run `scripts/build.sh`; see `.github/workflows/release.yml` for the exact environment variables.
 
