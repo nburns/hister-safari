@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     tags: ['v*']
+  pull_request:
   workflow_dispatch:
     inputs:
       version:
@@ -11,12 +12,18 @@ on:
         required: false
         default: ''
 
+# Cancel in-progress runs on the same branch/PR when a new commit lands.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       # Third-party actions pinned to full commit SHAs (defense against
       # tag-mutation / action-repo compromise). Version tags in comments; bump
@@ -36,6 +43,7 @@ jobs:
         run: brew install xcodegen
 
       - name: Import Developer ID cert
+        if: github.event_name != 'pull_request'
         env:
           CERT_P12_BASE64: ${{ secrets.APPLE_DEVELOPER_ID_CERT_P12 }}
           CERT_PASSWORD: ${{ secrets.APPLE_DEVELOPER_ID_CERT_PASSWORD }}
@@ -53,6 +61,7 @@ jobs:
           security list-keychain -d user -s "$KEYCHAIN" login.keychain
 
       - name: Populate ExportOptions.plist team ID
+        if: github.event_name != 'pull_request'
         run: |
           /usr/libexec/PlistBuddy \
               -c "Set :teamID ${{ secrets.APPLE_TEAM_ID }}" \
@@ -83,10 +92,12 @@ jobs:
           echo "hister_version=$V" >> "$GITHUB_OUTPUT"
           echo "==> HISTER_VERSION=$V"
 
-      - name: Build, sign, notarize
+      # On PRs: unsigned ad-hoc build only (no secrets, no notary).
+      # On push/dispatch: signed + notarized.
+      - name: Build
         env:
-          CODE_SIGN_IDENTITY: Developer ID Application
-          NOTARIZE: '1'
+          CODE_SIGN_IDENTITY: ${{ github.event_name == 'pull_request' && '-' || 'Developer ID Application' }}
+          NOTARIZE: ${{ github.event_name == 'pull_request' && '0' || '1' }}
           APPLE_NOTARY_USER: ${{ secrets.APPLE_NOTARY_USER }}
           APPLE_NOTARY_PASSWORD: ${{ secrets.APPLE_NOTARY_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
@@ -94,6 +105,7 @@ jobs:
         run: scripts/build.sh
 
       - name: Release notes
+        if: github.event_name == 'push'
         id: notes
         run: |
           UPSTREAM_SHA="$(git -C vendor/hister rev-parse HEAD)"
@@ -124,3 +136,75 @@ jobs:
           name: hister-dmg
           path: build/Hister-*.dmg
           if-no-files-found: error
+
+      # PR-only: publish the unsigned .app as an artifact and drop a sticky
+      # comment on the PR pointing reviewers at the download.
+      #
+      # Stage into a dedicated dir so the artifact zip preserves the
+      # `Hister.app/` wrapper directory. If we pointed upload-artifact at
+      # Hister.app itself, the .app's contents would land at the artifact
+      # root (Contents/, Frameworks/, ...) and macOS wouldn't recognise the
+      # unzipped tree as an app bundle.
+      - name: Stage PR artifact
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          mkdir -p build/pr-artifact
+          cp -R build/export/Hister.app build/pr-artifact/
+
+      - name: Upload artifact (PR)
+        id: pr_artifact
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: hister-pr-${{ github.event.pull_request.number }}-${{ github.run_number }}
+          path: build/pr-artifact
+          if-no-files-found: error
+
+      - name: Post download link on PR
+        if: github.event_name == 'pull_request' && success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          ARTIFACT_URL: ${{ steps.pr_artifact.outputs.artifact-url }}
+        run: |
+          set -euo pipefail
+          SHORT_SHA="${COMMIT_SHA:0:7}"
+          MARKER="<!-- hister-ci-build-link -->"
+          # artifact-url is the browser page (…/artifacts/<id>). The API zip
+          # endpoint lives at /repos/…/actions/artifacts/<id>/zip and requires
+          # auth, so the curl below uses `gh auth token`.
+          ARTIFACT_ID="${ARTIFACT_URL##*/}"
+          ONELINER="curl -sL -H \"Authorization: Bearer \$(gh auth token)\" \"https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip\" -o /tmp/hister.zip && unzip -qo /tmp/hister.zip -d /tmp/hister && xattr -dr com.apple.quarantine /tmp/hister/Hister.app && open /tmp/hister/Hister.app"
+
+          # Build the comment body line-by-line so YAML block-scalar indentation
+          # can't bleed into the rendered markdown.
+          BODY=$(printf '%s\n' \
+              "${MARKER}" \
+              "**Unsigned CI build ready** for commit \`${SHORT_SHA}\`." \
+              "" \
+              "[Download Hister.app (zipped)](${ARTIFACT_URL}) — or open the [run summary](${RUN_URL}) and grab it from the Artifacts section." \
+              "" \
+              "One-liner to download, unquarantine, and launch (requires \`gh auth login\` once):" \
+              "" \
+              '```sh' \
+              "${ONELINER}" \
+              '```' \
+              "" \
+              "Or if you already have the zip locally, just strip the quarantine attribute and open:" \
+              "" \
+              '```sh' \
+              'unzip -qo ~/Downloads/hister-pr-*.zip -d /tmp/hister && xattr -dr com.apple.quarantine /tmp/hister/Hister.app && open /tmp/hister/Hister.app' \
+              '```')
+
+          # Find and update prior bot comment on this PR (identified by the
+          # HTML marker), or create a new one if none exists.
+          EXISTING=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" \
+              --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body | contains(\"${MARKER}\")))][0].id")
+          if [[ -n "$EXISTING" && "$EXISTING" != "null" ]]; then
+              gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${EXISTING}" -f body="$BODY" > /dev/null
+          else
+              gh pr comment "$PR" --body "$BODY"
+          fi

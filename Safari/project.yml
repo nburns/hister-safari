@@ -3,7 +3,7 @@ options:
   createIntermediateGroups: true
   defaultConfig: Release
   deploymentTarget:
-    macOS: "26.4"
+    macOS: "15.0"
   groupSortPosition: top
   generateEmptyDirectories: true
 
@@ -55,7 +55,7 @@ settings:
     GCC_WARN_UNUSED_FUNCTION: YES
     GCC_WARN_UNUSED_VARIABLE: YES
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
-    MACOSX_DEPLOYMENT_TARGET: "26.4"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
     MTL_FAST_MATH: YES
     SDKROOT: macosx
   configs:
