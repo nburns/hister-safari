@@ -31,6 +31,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           submodules: recursive
+          # Full history + tags so the release-notes step can diff against
+          # the previous release tag.
+          fetch-depth: 0
 
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
         with:
@@ -107,15 +110,41 @@ jobs:
       - name: Release notes
         if: github.event_name == 'push'
         id: notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           UPSTREAM_SHA="$(git -C vendor/hister rev-parse HEAD)"
+
+          # Previous release tag (the most recent published release before
+          # this run). Empty on the very first release.
+          PREV_TAG="$(gh release list --limit 1 --json tagName --jq '.[0].tagName // ""')"
+          if [[ -n "$PREV_TAG" ]] && git rev-parse -q --verify "refs/tags/${PREV_TAG}" >/dev/null; then
+              CHANGES="$(git log --pretty=format:'- %s' "${PREV_TAG}..HEAD")"
+              RANGE_HEADER="Changes since [\`${PREV_TAG}\`](../../releases/tag/${PREV_TAG}):"
+          else
+              CHANGES="$(git log --pretty=format:'- %s')"
+              RANGE_HEADER="Changes:"
+          fi
+          [[ -z "$CHANGES" ]] && CHANGES="- (no new commits)"
+
+          # Squash-merge subjects end with "(#123)" — turn that into a link
+          # to the PR. Uses | as sed delimiter to avoid escaping the slashes
+          # in the repo URL.
+          REPO_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
+          CHANGES="$(printf '%s\n' "$CHANGES" | sed -E "s|\(#([0-9]+)\)|([#\1](${REPO_URL}/pull/\1))|g")"
+
           {
-              echo "notes<<EOF"
+              echo "notes<<HISTER_NOTES_EOF"
               echo "Unofficial Safari build of Hister."
               echo
               echo "Built from upstream commit \`$UPSTREAM_SHA\`."
               echo "Signed with an Apple Developer ID and notarized by Apple."
-              echo "EOF"
+              echo
+              echo "$RANGE_HEADER"
+              echo
+              echo "$CHANGES"
+              echo "HISTER_NOTES_EOF"
           } >> "$GITHUB_OUTPUT"
 
       # Publish paths -----------------------------------------------------
