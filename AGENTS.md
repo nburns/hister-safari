@@ -44,7 +44,7 @@ Environment knobs:
 - **Never commit `Safari/Hister.xcodeproj/` or `Safari/Hister Extension/Resources/`.** Both are gitignored and generated.
 - **CI actions are pinned to full commit SHAs** with the version tag in a trailing comment. See `.github/workflows/release.yml`. This is defense against tag-mutation / action-repo compromise. When bumping, resolve the SHA via `gh api /repos/<owner>/<repo>/git/refs/tags/<tag>`.
 - **Every push to `main` publishes a full release**, not a prerelease. Tag pushes (`vX.Y.Z`) use the tag as the version; branch pushes get a `v0.<day-of-year>.<h>.<m>` stamp. `workflow_dispatch` only uploads a build artifact, never a release.
-- **macOS 26.4 (Tahoe) is the deployment target** for the app; the extension target keeps `MACOSX_DEPLOYMENT_TARGET=10.14` as inherited from Apple's Safari extension template. Both are declared in `Safari/project.yml`.
+- **macOS 15 (Sequoia) is the deployment target** for the app; the extension target keeps `MACOSX_DEPLOYMENT_TARGET=10.14` as inherited from Apple's Safari extension template. Both are declared in `Safari/project.yml`.
 - **The wrapper adds no telemetry** and makes no network calls beyond what upstream Hister does. Keep it that way.
 
 ## Updating to a new upstream release

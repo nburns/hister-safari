@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       # Third-party actions pinned to full commit SHAs (defense against
       # tag-mutation / action-repo compromise). Version tags in comments; bump

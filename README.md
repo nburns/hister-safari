@@ -18,7 +18,7 @@ Upstream source is never modified; the wrapper only patches the produced `dist/`
 
 ## Install (end users)
 
-Requires macOS 26.4 (Tahoe) or later, and a running [Hister server](https://github.com/asciimoo/hister) you can reach from your Mac.
+Requires macOS 15 (Sequoia) or later, and a running [Hister server](https://github.com/asciimoo/hister) you can reach from your Mac.
 
 Once a release is published:
 
