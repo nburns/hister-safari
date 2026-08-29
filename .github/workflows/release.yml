@@ -39,6 +39,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Test manifest patcher
+        run: node --test scripts/patch-manifest.test.mjs
+
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
 

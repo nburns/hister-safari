@@ -8,18 +8,13 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const [, , upstreamPath, overridePath, outPath] = process.argv;
-if (!upstreamPath || !overridePath || !outPath) {
-  console.error('usage: patch-manifest.mjs <upstream> <override> <output>');
-  process.exit(2);
-}
-
-function isPlainObject(v) {
+export function isPlainObject(v) {
   return v !== null && typeof v === 'object' && !Array.isArray(v);
 }
 
-function merge(base, patch) {
+export function merge(base, patch) {
   if (!isPlainObject(patch)) return patch;
   const out = isPlainObject(base) ? { ...base } : {};
   for (const [k, v] of Object.entries(patch)) {
@@ -35,10 +30,26 @@ function merge(base, patch) {
   return out;
 }
 
-const upstream = JSON.parse(readFileSync(upstreamPath, 'utf8'));
-const override = JSON.parse(readFileSync(overridePath, 'utf8'));
-const merged = merge(upstream, override);
+export function patchManifest(upstream, override) {
+  return merge(upstream, override);
+}
 
-mkdirSync(dirname(outPath), { recursive: true });
-writeFileSync(outPath, JSON.stringify(merged, null, 2) + '\n');
-console.error(`wrote ${outPath}`);
+function main(argv) {
+  const [, , upstreamPath, overridePath, outPath] = argv;
+  if (!upstreamPath || !overridePath || !outPath) {
+    console.error('usage: patch-manifest.mjs <upstream> <override> <output>');
+    process.exit(2);
+  }
+
+  const upstream = JSON.parse(readFileSync(upstreamPath, 'utf8'));
+  const override = JSON.parse(readFileSync(overridePath, 'utf8'));
+  const merged = merge(upstream, override);
+
+  mkdirSync(dirname(outPath), { recursive: true });
+  writeFileSync(outPath, JSON.stringify(merged, null, 2) + '\n');
+  console.error(`wrote ${outPath}`);
+}
+
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
+  main(process.argv);
+}

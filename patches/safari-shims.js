@@ -1,14 +1,20 @@
 // Safari compatibility shim, prepended to background.js at build time.
 //
-// Upstream background.js uses OffscreenCanvas + createImageBitmap inside the
-// service worker to derive greyscale toolbar icons at runtime. Safari's MV3
-// service worker does not reliably support OffscreenCanvas, so we intercept
-// chrome.action.setIcon and swap runtime-generated ImageData for prebuilt
-// grey/normal PNGs shipped in assets/icons/. The prebuilt icons are copied
-// into the bundle by scripts/build.sh.
+// 1. Toolbar icons. Upstream background.js uses OffscreenCanvas +
+//    createImageBitmap inside the service worker to derive greyscale toolbar
+//    icons at runtime. Safari's MV3 service worker does not reliably support
+//    OffscreenCanvas, so we intercept chrome.action.setIcon and swap
+//    runtime-generated ImageData for prebuilt grey/normal PNGs shipped in
+//    assets/icons/. The prebuilt icons are copied into the bundle by
+//    scripts/build.sh.
 //
-// Detection: an imageData-based setIcon call is the runtime-generated path.
-// A path-based call is the caller's own choice and passes through untouched.
+//    Detection: an imageData-based setIcon call is the runtime-generated
+//    path. A path-based call is the caller's own choice and passes through.
+//
+// 2. Internal Safari pages. Upstream updateTabIcon already skips
+//    chrome-extension:// and moz-extension:// URLs. Safari's equivalent
+//    schemes are not in that list, so we wrap tabs.onUpdated / onActivated
+//    and drop those events before they reach upstream.
 
 (function installIconShim() {
   if (typeof chrome === 'undefined' || !chrome.action || !chrome.action.setIcon) return;
@@ -44,4 +50,28 @@
     }
     return originalSetIcon(details, callback);
   };
+})();
+
+(function installTabUrlFilter() {
+  if (typeof chrome === 'undefined' || !chrome.tabs) return;
+
+  function isSafariInternalURL(url) {
+    if (!url) return false;
+    return (
+      url.startsWith('safari-web-extension://') ||
+      url.startsWith('safari-extension://') ||
+      url.startsWith('applewebdata://')
+    );
+  }
+
+  if (chrome.tabs.onUpdated && chrome.tabs.onUpdated.addListener) {
+    const original = chrome.tabs.onUpdated.addListener.bind(chrome.tabs.onUpdated);
+    chrome.tabs.onUpdated.addListener = function filteredOnUpdated(listener) {
+      return original(function (tabId, changeInfo, tab) {
+        const url = (tab && tab.url) || changeInfo.url || '';
+        if (isSafariInternalURL(url)) return;
+        return listener(tabId, changeInfo, tab);
+      });
+    };
+  }
 })();

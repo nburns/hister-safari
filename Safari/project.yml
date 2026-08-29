@@ -101,6 +101,7 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_FILE: Hister/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: Hister
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         INFOPLIST_KEY_NSHumanReadableCopyright: ""
         INFOPLIST_KEY_NSMainStoryboardFile: Main
         INFOPLIST_KEY_NSPrincipalClass: NSApplication
@@ -128,14 +129,28 @@ targets:
     platform: macOS
     sources:
       - path: "Hister Extension/SafariWebExtensionHandler.swift"
-      - path: "Hister Extension/Resources"
-        buildPhase: resources
+    postCompileScripts:
+      - name: Copy web extension resources
+        basedOnDependencyAnalysis: false
+        shell: /bin/bash
+        script: |
+          set -euo pipefail
+          SRC="${SRCROOT}/Hister Extension/Resources"
+          DEST="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+          if [[ ! -d "$SRC" ]]; then
+            echo "error: $SRC missing; run scripts/build.sh to stage the extension bundle" >&2
+            exit 1
+          fi
+          mkdir -p "$DEST"
+          rsync -a "$SRC/" "$DEST/"
     settings:
       base:
         CODE_SIGN_STYLE: Automatic
         CURRENT_PROJECT_VERSION: 1
         ENABLE_APP_SANDBOX: YES
         ENABLE_HARDENED_RUNTIME: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
         ENABLE_USER_SELECTED_FILES: readonly
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_FILE: "Hister Extension/Info.plist"
