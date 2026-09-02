@@ -64,14 +64,60 @@
     );
   }
 
-  if (chrome.tabs.onUpdated && chrome.tabs.onUpdated.addListener) {
-    const original = chrome.tabs.onUpdated.addListener.bind(chrome.tabs.onUpdated);
-    chrome.tabs.onUpdated.addListener = function filteredOnUpdated(listener) {
-      return original(function (tabId, changeInfo, tab) {
-        const url = (tab && tab.url) || changeInfo.url || '';
-        if (isSafariInternalURL(url)) return;
-        return listener(tabId, changeInfo, tab);
+  // Track original listener -> wrapper so removeListener/hasListener keep working.
+  function wrapTabEventTarget(eventTarget, wrapListener) {
+    if (!eventTarget || !eventTarget.addListener) return;
+
+    const wrapped = new Map();
+    const originalAdd = eventTarget.addListener.bind(eventTarget);
+    const originalRemove = eventTarget.removeListener
+      ? eventTarget.removeListener.bind(eventTarget)
+      : null;
+    const originalHas = eventTarget.hasListener
+      ? eventTarget.hasListener.bind(eventTarget)
+      : null;
+
+    eventTarget.addListener = function patchedAddListener(listener) {
+      const wrapper = wrapListener(listener);
+      wrapped.set(listener, wrapper);
+      return originalAdd(wrapper);
+    };
+
+    if (originalRemove) {
+      eventTarget.removeListener = function patchedRemoveListener(listener) {
+        const wrapper = wrapped.get(listener);
+        if (wrapper) {
+          wrapped.delete(listener);
+          return originalRemove(wrapper);
+        }
+        return originalRemove(listener);
+      };
+    }
+
+    if (originalHas) {
+      eventTarget.hasListener = function patchedHasListener(listener) {
+        const wrapper = wrapped.get(listener);
+        if (wrapper) return originalHas(wrapper);
+        return originalHas(listener);
+      };
+    }
+  }
+
+  wrapTabEventTarget(chrome.tabs.onUpdated, function wrapOnUpdated(listener) {
+    return function filteredOnUpdated(tabId, changeInfo, tab) {
+      const url = (tab && tab.url) || changeInfo.url || '';
+      if (isSafariInternalURL(url)) return;
+      return listener(tabId, changeInfo, tab);
+    };
+  });
+
+  wrapTabEventTarget(chrome.tabs.onActivated, function wrapOnActivated(listener) {
+    return function filteredOnActivated(activeInfo) {
+      chrome.tabs.get(activeInfo.tabId, (tab) => {
+        if (chrome.runtime.lastError) return;
+        if (tab && isSafariInternalURL(tab.url)) return;
+        return listener(activeInfo);
       });
     };
-  }
+  });
 })();

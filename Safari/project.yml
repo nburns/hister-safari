@@ -142,7 +142,7 @@ targets:
             exit 1
           fi
           mkdir -p "$DEST"
-          rsync -a "$SRC/" "$DEST/"
+          rsync -a --delete "$SRC/" "$DEST/"
     settings:
       base:
         CODE_SIGN_STYLE: Automatic
