@@ -2,6 +2,16 @@
   "$comment": "Safari-only overrides merged over vendor/hister/webui/ext/dist/manifest.json by scripts/patch-manifest.mjs. Keys with null values are deleted from the merged output.",
   "key": null,
   "$comment_background": "Chrome's manifest sets service_worker at plugin time. Safari 17+ supports MV3 service_worker natively, so no change is needed here. The Safari-specific runtime shim is concatenated into background.js by scripts/build.sh so it runs before the upstream code.",
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png"
+    }
+  },
   "commands": {
     "index-current-page": {
       "suggested_key": {

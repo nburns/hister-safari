@@ -107,6 +107,35 @@ for name in icon-16.png icon-32.png icon-grey-16.png icon-grey-32.png; do
     cp -- "assets/$name" "$RESOURCES/assets/icons/$name"
 done
 
+# Safari Settings lists every path in icons / default_icon. Upstream ships
+# icon128.png via the ext build; copy it explicitly so a dist layout change
+# cannot leave the appex with a dangling manifest path (issue #49 thread).
+if [[ -f "$UPSTREAM_EXT/dist/assets/icons/icon128.png" ]]; then
+    cp -- "$UPSTREAM_EXT/dist/assets/icons/icon128.png" "$RESOURCES/assets/icons/icon128.png"
+elif [[ -f "$UPSTREAM_EXT/assets/icon128.png" ]]; then
+    mkdir -p -- "$RESOURCES/assets/icons"
+    cp -- "$UPSTREAM_EXT/assets/icon128.png" "$RESOURCES/assets/icons/icon128.png"
+else
+    echo "error: upstream icon128.png missing from dist and source" >&2
+    exit 1
+fi
+
+python3 -c '
+import json, os, sys
+root = sys.argv[1]
+manifest = json.load(open(os.path.join(root, "manifest.json")))
+required = []
+for collection in (manifest.get("icons") or {}, (manifest.get("action") or {}).get("default_icon") or {}):
+    required.extend(collection.values())
+missing = [rel for rel in required if not os.path.isfile(os.path.join(root, rel))]
+if missing:
+    sys.exit("extension bundle is missing icon files: " + ", ".join(missing))
+bg = open(os.path.join(root, "background.js"), encoding="utf-8").read()
+if "installIconShim" not in bg:
+    sys.exit("background.js is missing the Safari icon shim")
+print("bundle ok: icons + safari shim present")
+' "$RESOURCES"
+
 if [[ "${SKIP_XCODE:-0}" == "1" ]]; then
     echo "==> SKIP_XCODE=1, done."
     exit 0
@@ -161,6 +190,25 @@ else
         -exportOptionsPlist Safari/ExportOptions.plist \
         -exportPath build/export
 fi
+
+APPEX_RES="build/export/Hister.app/Contents/PlugIns/Hister Extension.appex/Contents/Resources"
+python3 -c '
+import json, os, sys
+root = sys.argv[1]
+if not os.path.isdir(root):
+    sys.exit("appex Resources missing: " + root)
+manifest = json.load(open(os.path.join(root, "manifest.json")))
+required = []
+for collection in (manifest.get("icons") or {}, (manifest.get("action") or {}).get("default_icon") or {}):
+    required.extend(collection.values())
+missing = [rel for rel in required if not os.path.isfile(os.path.join(root, rel))]
+if missing:
+    sys.exit("appex is missing icon files (Copy Bundle Resources flattened them?): " + ", ".join(missing))
+nested = os.path.join(root, "assets", "icons", "icon128.png")
+if not os.path.isfile(nested):
+    sys.exit("appex lost assets/icons/ layout; icon128.png must stay nested")
+print("appex ok: nested icons present")
+' "$APPEX_RES"
 
 if [[ "${NOTARIZE:-0}" == "1" ]]; then
     DMG="build/Hister-${DMG_VERSION}.dmg"

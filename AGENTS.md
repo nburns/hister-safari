@@ -20,6 +20,7 @@ Rules:
 - To change targets, build settings, frameworks, deployment targets, entitlements-adjacent flags (`ENABLE_APP_SANDBOX`, `REGISTER_APP_GROUPS`, etc.), or add source folders → **edit `Safari/project.yml`**, then rerun `xcodegen generate` inside `Safari/` (or just `scripts/build.sh`, which does it for you).
 - Do **not** commit changes to `Safari/Hister.xcodeproj/` — they are ignored, but if you touch them in Xcode's UI they will be silently wiped on the next generate.
 - Extension resources (`Safari/Hister Extension/Resources/`) are also gitignored — they are the output of `scripts/build.sh` (upstream `npm run build` + patches). Don't hand-edit them.
+- **Do not add `Hister Extension/Resources` as an Xcode "Copy Bundle Resources" group.** Xcode flattens nested files, which breaks `assets/icons/icon128.png` (the Safari Settings errors reported on issue #49). `project.yml` copies the tree with rsync in a build script so the layout is preserved. `scripts/build.sh` fails the build if the appex is missing that nested path.
 
 ## Setup
 
@@ -46,6 +47,7 @@ Environment knobs:
 - **Every push to `main` publishes a full release**, not a prerelease. Tag pushes (`vX.Y.Z`) use the tag as the version; branch pushes get a `v0.<day-of-year>.<h>.<m>` stamp. `workflow_dispatch` only uploads a build artifact, never a release.
 - **macOS 15 (Sequoia) is the deployment target** for the app; the extension target keeps `MACOSX_DEPLOYMENT_TARGET=10.14` as inherited from Apple's Safari extension template. Both are declared in `Safari/project.yml`.
 - **The wrapper adds no telemetry** and makes no network calls beyond what upstream Hister does. Keep it that way.
+- **Manifest merge tests** live in `scripts/patch-manifest.test.mjs`. Run with `node --test scripts/patch-manifest.test.mjs`. The release workflow runs them before xcodebuild.
 
 ## Updating to a new upstream release
 

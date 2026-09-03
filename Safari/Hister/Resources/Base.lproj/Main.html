@@ -3,17 +3,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <link rel="stylesheet" href="../Style.css">
     <script src="../Script.js" defer></script>
 </head>
 <body>
     <img src="../Icon.png" width="128" height="128" alt="Hister Icon">
-    <p class="state-unknown">You can turn on Hister’s extension in Safari Extensions preferences.</p>
-    <p class="state-on">Hister’s extension is currently on. You can turn it off in Safari Extensions preferences.</p>
-    <p class="state-off">Hister’s extension is currently off. You can turn it on in Safari Extensions preferences.</p>
+    <h1>Hister for Safari</h1>
+    <p class="unofficial">Unofficial community port. Not affiliated with the upstream Hister project.</p>
+    <p class="state-unknown">Enable the extension in Safari Settings, then click the toolbar icon to set your Hister server URL (default <span class="mono">http://127.0.0.1:4433/</span>).</p>
+    <p class="state-on">The extension is on. Click the Hister toolbar icon to confirm the server URL, then browse as usual — visited pages are indexed automatically, same as the Chrome and Firefox extensions.</p>
+    <p class="state-off">The extension is off. Turn it on in Safari Settings to start indexing pages you visit.</p>
+    <ol class="steps">
+        <li>Run a Hister server you control.</li>
+        <li>Enable <strong>Hister</strong> in Safari → Settings → Extensions.</li>
+        <li>Click the toolbar icon and save your server URL (and access token, if you use one).</li>
+    </ol>
+    <p class="shortcuts">Safari does not apply the Chrome/Firefox keyboard shortcuts automatically. Assign them under Safari → Settings → Extensions if you want the index / skip-rule commands.</p>
     <button class="open-preferences">Quit and Open Safari Extensions Preferences…</button>
 </body>
 </html>

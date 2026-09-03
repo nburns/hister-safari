@@ -1,14 +1,20 @@
 // Safari compatibility shim, prepended to background.js at build time.
 //
-// Upstream background.js uses OffscreenCanvas + createImageBitmap inside the
-// service worker to derive greyscale toolbar icons at runtime. Safari's MV3
-// service worker does not reliably support OffscreenCanvas, so we intercept
-// chrome.action.setIcon and swap runtime-generated ImageData for prebuilt
-// grey/normal PNGs shipped in assets/icons/. The prebuilt icons are copied
-// into the bundle by scripts/build.sh.
+// 1. Toolbar icons. Upstream background.js uses OffscreenCanvas +
+//    createImageBitmap inside the service worker to derive greyscale toolbar
+//    icons at runtime. Safari's MV3 service worker does not reliably support
+//    OffscreenCanvas, so we intercept chrome.action.setIcon and swap
+//    runtime-generated ImageData for prebuilt grey/normal PNGs shipped in
+//    assets/icons/. The prebuilt icons are copied into the bundle by
+//    scripts/build.sh.
 //
-// Detection: an imageData-based setIcon call is the runtime-generated path.
-// A path-based call is the caller's own choice and passes through untouched.
+//    Detection: an imageData-based setIcon call is the runtime-generated
+//    path. A path-based call is the caller's own choice and passes through.
+//
+// 2. Internal Safari pages. Upstream updateTabIcon already skips
+//    chrome-extension:// and moz-extension:// URLs. Safari's equivalent
+//    schemes are not in that list, so we wrap tabs.onUpdated / onActivated
+//    and drop those events before they reach upstream.
 
 (function installIconShim() {
   if (typeof chrome === 'undefined' || !chrome.action || !chrome.action.setIcon) return;
@@ -44,4 +50,74 @@
     }
     return originalSetIcon(details, callback);
   };
+})();
+
+(function installTabUrlFilter() {
+  if (typeof chrome === 'undefined' || !chrome.tabs) return;
+
+  function isSafariInternalURL(url) {
+    if (!url) return false;
+    return (
+      url.startsWith('safari-web-extension://') ||
+      url.startsWith('safari-extension://') ||
+      url.startsWith('applewebdata://')
+    );
+  }
+
+  // Track original listener -> wrapper so removeListener/hasListener keep working.
+  function wrapTabEventTarget(eventTarget, wrapListener) {
+    if (!eventTarget || !eventTarget.addListener) return;
+
+    const wrapped = new Map();
+    const originalAdd = eventTarget.addListener.bind(eventTarget);
+    const originalRemove = eventTarget.removeListener
+      ? eventTarget.removeListener.bind(eventTarget)
+      : null;
+    const originalHas = eventTarget.hasListener
+      ? eventTarget.hasListener.bind(eventTarget)
+      : null;
+
+    eventTarget.addListener = function patchedAddListener(listener) {
+      const wrapper = wrapListener(listener);
+      wrapped.set(listener, wrapper);
+      return originalAdd(wrapper);
+    };
+
+    if (originalRemove) {
+      eventTarget.removeListener = function patchedRemoveListener(listener) {
+        const wrapper = wrapped.get(listener);
+        if (wrapper) {
+          wrapped.delete(listener);
+          return originalRemove(wrapper);
+        }
+        return originalRemove(listener);
+      };
+    }
+
+    if (originalHas) {
+      eventTarget.hasListener = function patchedHasListener(listener) {
+        const wrapper = wrapped.get(listener);
+        if (wrapper) return originalHas(wrapper);
+        return originalHas(listener);
+      };
+    }
+  }
+
+  wrapTabEventTarget(chrome.tabs.onUpdated, function wrapOnUpdated(listener) {
+    return function filteredOnUpdated(tabId, changeInfo, tab) {
+      const url = (tab && tab.url) || changeInfo.url || '';
+      if (isSafariInternalURL(url)) return;
+      return listener(tabId, changeInfo, tab);
+    };
+  });
+
+  wrapTabEventTarget(chrome.tabs.onActivated, function wrapOnActivated(listener) {
+    return function filteredOnActivated(activeInfo) {
+      chrome.tabs.get(activeInfo.tabId, (tab) => {
+        if (chrome.runtime.lastError) return;
+        if (tab && isSafariInternalURL(tab.url)) return;
+        return listener(activeInfo);
+      });
+    };
+  });
 })();

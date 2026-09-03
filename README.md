@@ -30,6 +30,12 @@ Once a release is published:
 
 Because the app is signed with an Apple Developer ID and notarized, there is no need to enable "Allow unsigned extensions" and the extension stays enabled across Safari restarts.
 
+The toolbar popup, skip rules, PDF indexing, access-token auth, and indexed-badge behaviour are the same code as the Chrome and Firefox extensions. Safari-only differences:
+
+- Toolbar icons are pre-rendered PNGs (Safari's service worker cannot use `OffscreenCanvas`).
+- Keyboard shortcuts are **not** applied from `suggested_key`. Assign them in Safari → Settings → Extensions if you want them.
+- The popup talks to your Hister server with a `safari-web-extension://` origin. Current Hister already allows that origin for CSRF. Token-auth from the popup also needs the server to answer CORS preflight (`OPTIONS`). Background indexing of pages works against stock Hister.
+
 ### Uninstall
 
 Quit Safari, drag `Hister.app` from `/Applications` to the Trash, then reopen Safari. Any extension settings stored in Safari are removed with the containing app.
@@ -42,8 +48,11 @@ Requires: macOS with Xcode 15+, plus the tools in `Brewfile` (Node.js, XcodeGen)
 git clone --recurse-submodules https://github.com/nburns/hister-safari.git
 cd hister-safari
 brew bundle                   # installs xcodegen + node
+node --test scripts/patch-manifest.test.mjs
 scripts/build.sh              # unsigned local build (CODE_SIGN_IDENTITY=- by default)
 ```
+
+Unsigned local builds require Safari's Develop menu → **Allow Unsigned Extensions** after each Safari restart.
 
 `scripts/build.sh` regenerates `Safari/Hister.xcodeproj` from `Safari/project.yml` on every run, so if you need to open Xcode directly, run `xcodegen generate` inside `Safari/` first (or just run the build script once).
 
